@@ -35,7 +35,7 @@ console.log(mensajeModerno);
 mensajeModerno = "Nuevo valor asignado a let";
 console.log(mensajeModerno);
 ```
-### a palabra clave `const` (Constantes)
+### La palabra clave `const` (Constantes)
 Se utiliza para valores que no deben cambiar a lo largo de la ejecución del programa. No podemos sobrescribir sus datos ni reasignarlos una vez declarados.
 
 ```javascript
