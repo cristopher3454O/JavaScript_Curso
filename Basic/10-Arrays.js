@@ -52,5 +52,5 @@ console.log(newArreglo)
 newArreglo = myArray.splice(1,3)
 console.log(newArreglo)
 
-newArreglo = myArray.splice(1,2, "Amor?")
+newArreglo = myArray.splice(1,2, "Amor?") //Agrega nueva entrada
 console.log(myArray)
