@@ -6,20 +6,20 @@ Bienvenido a mi repositorio de apuntes de JavaScript. Esta guía recopila los fu
 
 - [HelloWord](#00-helloword)
 -  [01 - Variables en JavaScript](#01---variables-en-javascript)
-- [La palabra clave var](#1-la-palabra-clave-var)
-- [La palabra clave let](#la-palabra-clave-let)
-- [La palabra clave const (Constantes)](#la-palabra-clave-const-constantes)
+   - [La palabra clave var](#1-la-palabra-clave-var)
+   - [La palabra clave let](#la-palabra-clave-let)
+   - [La palabra clave const (Constantes)](#la-palabra-clave-const-constantes)
 
 <!--TIPOS DE DATOS -->
 - [02 - Tipos de Datos en JavaScript](#02---tipos-de-datos-en-javascript)
-- [1. String (Cadenas de Texto)](#1-string-cadenas-de-texto)
-- [2. Números (Number)](#2-números-number)
-- [3. Booleanos](#3-booleanos)
-- [4. Undefined](#4-undefined)
-- [5. Null](#5-null)
-- [6. Symbol](#6-symbol)
-- [7. BigInt](#6-symbol)
-- [8. Operador Typeof](#8-operador-typeof)
+  - [1. String (Cadenas de Texto)](#1-string-cadenas-de-texto)
+  - [2. Números (Number)](#2-números-number)
+  - [3. Booleanos](#3-booleanos)
+  - [4. Undefined](#4-undefined)
+  - [5. Null](#5-null)
+  - [6. Symbol](#6-symbol)
+  - [7. BigInt](#6-symbol)
+  - [8. Operador Typeof](#8-operador-typeof)
 
 
 
