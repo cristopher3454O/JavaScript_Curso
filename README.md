@@ -258,7 +258,7 @@ isRaining
   : console.log("No está lloviendo");
 ```
 
-### CODIGO
+#### CODIGO
 - [Operadores](./Basic/04-Operadores.js)
 
 ## 06 - Strings (Cadenas de Texto) en JavaScript
@@ -326,5 +326,107 @@ console.log(message);
 console.log(`Cristopher ${message}`);
 ```
 
-### CODIGO
+#### CODIGO
 - [Strings (Cadenas de Texto)](./Basic/06-String.js)
+
+
+## 08 - Estructuras Condicionales en JavaScript
+
+Las estructuras condicionales nos permiten tomar decisiones dentro de nuestro código, ejecutando diferentes bloques de instrucciones según se cumplan o no determinadas condiciones lógicas.
+
+En JavaScript, disponemos de sentencias como `if`, `if-else`, `else-if`, la estructura `switch` y los operadores ternarios.
+
+---
+
+### 1. Condicional `if`
+
+Evalúa una condición. Si el resultado es verdadero (`true`), se ejecuta el bloque de código contenido en su interior.
+
+```javascript
+let edad = 18;
+
+if (edad === 18) {
+    console.log("¡Tienes exactamente 18 años!");
+}
+```
+
+---
+
+### 2. Condicional `if - else`
+
+Permite definir un bloque de código alternativo que se ejecutará en caso de que la condición principal sea falsa (`false`).
+
+```javascript
+let edad = 15;
+
+if (edad >= 18) {
+    console.log("Eres mayor de edad.");
+} else {
+    console.log("Eres menor de edad.");
+}
+```
+
+---
+
+### 3. Condicional Anidado `if - else if - else`
+
+Se utiliza cuando necesitamos evaluar múltiples condiciones de forma secuencial. Si ninguna de las condiciones anteriores se cumple, se ejecutará por defecto el bloque `else`.
+
+```javascript
+let edad = 16;
+
+if (edad === 18) {
+    console.log("Tienes 18 años.");
+} else if (edad === 16) {
+    console.log("Tienes 16 años.");
+} else {
+    console.log("No tienes ni 16 ni 18 años.");
+}
+```
+
+---
+
+### 4. Operador Ternario
+
+Es una alternativa compacta y elegante al `if-else` tradicional para evaluar expresiones sencillas de tipo booleano. Su sintaxis es:
+`condición ? valorSiEsVerdadero : valorSiEsFalso`
+
+```javascript
+let edad = 18;
+const message = (edad === 18) ? "La edad es 18" : "La edad no es 18";
+
+console.log(message);
+```
+
+---
+
+### 5. Condicional `switch`
+
+Ideal para evaluar una única expresión frente a múltiples posibles valores fijos (como números o caracteres). Es una alternativa más limpia a tener muchos `else if` seguidos. 
+
+*Nota: La instrucción `break` es fundamental para detener la ejecución una vez que se encuentra la coincidencia.*
+
+```javascript
+let day = 1;
+let dayName = "";
+
+switch (day) {
+    case 0:
+        dayName = "Lunes";
+        break;
+    case 1:
+        dayName = "Martes";
+        break;
+    case 2:
+        dayName = "Miércoles";
+        break;
+    default: 
+        dayName = "Día no válido";
+        break;
+}
+
+console.log(dayName); // Martes
+```
+
+#### CODIGO
+- [Condicionales](./Basic/08-Condicionales.js)
