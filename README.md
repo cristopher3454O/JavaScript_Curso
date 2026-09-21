@@ -431,7 +431,9 @@ console.log(dayName); // Martes
 #### CODIGO
 - [Condicionales](./Basic/08-Condicionales.js)
 
-# 10 - Arrays (Arreglos) en JavaScript
+# Estructuras de Datos
+
+## 10 - Arrays (Arreglos) en JavaScript
 
 Un **Array** (o arreglo) es una estructura de datos que nos permite almacenar múltiples elementos (de diferentes tipos de datos como números, strings, booleanos, etc.) en una sola variable, organizados de manera secuencial mediante índices numéricos que comienzan desde el $0$.
 
@@ -529,5 +531,90 @@ console.log(myArray);
 #### CODIGO
 - [Array JavaScript](./Basic/10-Arrays.js)
 
+## 11 - Sets (Conjuntos) en JavaScript
 
+Un **Set** (conjunto) es una estructura de datos coleccional similar a un array, con la gran diferencia de que **no permite almacenar elementos duplicados** y los elementos no están indexados por posiciones numéricas fijas.
 
+### 1. Declaración e Inicialización
+
+Podemos declarar un Set vacío o inicializarlo directamente pasando un iterable (como un array).
+
+```javascript
+// Declaración de un Set vacío
+let mySet = new Set();
+console.log(mySet);
+
+// Inicialización con valores iniciales
+mySet = new Set(["Cristopher", "Alexander", "Breceda", "Lerma"]);
+console.log(mySet);
+
+```
+
+### 2. Métodos Comunes (Agregar y Eliminar)
+
+* **`add()`**: Agrega un nuevo elemento al final del Set.
+* **`delete()`**: Elimina un elemento específico. Retorna `true` si el elemento existía y fue eliminado con éxito, o `false` en caso contrario.
+
+```javascript
+// Agregar un nuevo elemento
+mySet.add("Fernanda");
+console.log(mySet);
+
+// Eliminar un elemento específico
+mySet.delete("Cristopher"); 
+console.log(mySet);
+
+/* ¿El elemento fue eliminado?
+   - Regresa true: Sí lo eliminó porque existía.
+   - Regresa false: No se eliminó porque no existe.
+*/
+console.log(mySet.delete("Breceda")); // true (o false si ya no está)
+
+```
+
+### 3. Comprobación de Existencia y Tamaño
+
+* **`has()`**: Permite verificar si un elemento específico se encuentra dentro del Set (`true` o `false`).
+* **`size`**: Propiedad (no es una función) que devuelve la cantidad de elementos que contiene el Set.
+
+```javascript
+// Comprobar si existe un elemento
+console.log(mySet.has("Cristopher")); // false (fue eliminado antes)
+console.log(mySet.has("Lerma"));      // true
+
+// Conocer la longitud o tamaño del Set
+console.log(mySet.size);
+
+```
+
+### 4. Conversiones entre Set y Array
+
+Es muy común transformar colecciones entre arrays y sets según las necesidades de nuestro código.
+
+```javascript
+// Convertir un Set a un Array (usando Array.from)
+let myArray = Array.from(mySet);
+console.log(myArray);
+
+// Convertir un Array a un Set
+mySet = new Set(myArray);
+console.log(mySet);
+
+```
+
+### 5. Característica Principal: Elementos Únicos
+
+Los Sets **no admiten valores duplicados**. Si intentas añadir un elemento que ya existe, este será ignorado y el tamaño del Set no cambiará.
+
+```javascript
+mySet.add("Alexander");
+mySet.add("Alexander");
+mySet.add("Alexander");
+
+console.log(mySet); // Solo aparecerá una vez "Alexander"
+
+```
+
+### CODIGO
+
+- [Sets](./Basic/11-Sets.js)
