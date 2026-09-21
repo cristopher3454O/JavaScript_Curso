@@ -1,3 +1,33 @@
+# Curso de JavaScript
+Bienvenido a mi repositorio de apuntes de JavaScript. Esta guía recopila los fundamentos del curso tomado de JS de mourdeDev
+
+<details open>
+<summary><b> Indice General (Tabla de contenido) </b></summary>
+
+- [HelloWord](#00-helloword)
+-  [01 - Variables en JavaScript](#01---variables-en-javascript)
+- [La palabra clave var](#1-la-palabra-clave-var)
+- [La palabra clave let](#la-palabra-clave-let)
+- [La palabra clave const (Constantes)](#la-palabra-clave-const-constantes)
+
+<!--TIPOS DE DATOS -->
+- [02 - Tipos de Datos en JavaScript](#02---tipos-de-datos-en-javascript)
+- [1. String (Cadenas de Texto)](#1-string-cadenas-de-texto)
+- [2. Números (Number)](#2-números-number)
+- [3. Booleanos](#3-booleanos)
+- [4. Undefined](#4-undefined)
+- [5. Null](#5-null)
+- [6. Symbol](#6-symbol)
+- [7. BigInt](#6-symbol)
+- [8. Operador Typeof](#8-operador-typeof)
+
+
+
+
+
+</details>
+
+
 ## 00-HelloWord
 
 Para imprimir mensajes en la terminal, utilizamos la función `console.log()`:
@@ -13,7 +43,7 @@ console.log("¡Hola, mundo!");
 
 En JavaScript, para declarar variables utilizamos tres palabras clave principales: `var`, `let` y `const`.
 
-### 1. La palabra clave `var`
+###  La palabra clave `var`
 Es la forma tradicional (y más antigua) de declarar variables. Permite sobrescribir su valor y no arroja errores de compilación si intentas usarla antes de declararla (debido al comportamiento conocido como *hoisting*).
 
 ```javascript
