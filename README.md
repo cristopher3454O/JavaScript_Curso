@@ -257,3 +257,74 @@ isRaining
   ? console.log("Está lloviendo") 
   : console.log("No está lloviendo");
 ```
+
+### CODIGO
+- [Operadores](./Basic/04-Operadores.js)
+
+## 06 - Strings (Cadenas de Texto) en JavaScript
+
+Un **String** (o cadena de texto) es uno de los tipos de datos primitivos en JavaScript, utilizado para representar y manipular texto. Se pueden delimitar utilizando comillas simples (`''`), comillas dobles (`""`), o comillas invertidas o templates literals (`` ``).
+
+### 1. Declaración y Concatenación
+
+Podemos unir (concatenar) cadenas de texto utilizando el operador `+`.
+
+```javascript
+let nombre = "Cristopher";
+let edad = "Tengo 18 años y me llamo:  " + nombre +  "!";
+console.log(edad);
+
+// typeof: Muestra el tipo de dato de la variable
+console.log(typeof edad); // string
+```
+
+### 2. Propiedades y Acceso a Caracteres
+
+Los strings tienen propiedades como `.length` para conocer su longitud y permiten acceder a caracteres específicos mediante índices (comenzando desde el $0$).
+
+```javascript
+// Longitud total de la cadena de texto
+console.log(edad.length);
+
+// Acceso a un carácter en específico por su índice
+console.log(edad[3]); // Devuelve la letra en la posición 3
+```
+
+### 3. Métodos Comunes en Strings
+
+JavaScript proporciona una serie de funciones integradas (métodos) para transformar y buscar dentro de las cadenas de texto.
+
+```javascript
+// Transformaciones de mayúsculas y minúsculas
+console.log(edad.toUpperCase()); // Convierte todo a MAYÚSCULAS
+console.log(edad.toLowerCase()); // Convierte todo a minúsculas
+
+// Búsqueda y validación
+console.log(edad.indexOf("me llamo")); // Retorna el índice donde inicia la coincidencia
+console.log("Incluye me llamo?: " + edad.includes("llamo")); // Retorna true o false si existe el texto
+
+// Manipulación y extracción
+console.log("Solo desde el indice 1 al 15: " + edad.slice(1, 15)); // Extrae una porción de la cadena
+console.log("Reemplazar 'me llamo' por 'remplace': " + edad.replace("me llamo", "remplace"));
+```
+
+### 4. Templates Literals (Plantillas de Texto)
+
+Las plantillas de cadenas (delimitadas por backticks \` \`) permiten la interpolación de variables de forma limpia y soportan múltiples líneas sin necesidad de caracteres de escape especiales.
+
+```javascript
+let message = `Hola amigos
+como estan? 
+Buenos DIAAAAAS
+`;
+
+let email = "Cristo@gmail.com";
+
+console.log(message);
+
+// Interpolación de variables: forma moderna y limpia de concatenar mensajes
+console.log(`Cristopher ${message}`);
+```
+
+### CODIGO
+- [Strings (Cadenas de Texto)](./Basic/06-String.js)
