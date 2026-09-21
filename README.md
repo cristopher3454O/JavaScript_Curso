@@ -121,3 +121,139 @@ console.log(typeof edad);   // Imprimirá: number
 
 #### CODIGO
 - [02-DataType.js](./Basic/02-DataTypes.js)
+
+## 03 - Operadores en JavaScript
+
+En JavaScript, los **operadores** son símbolos especiales que se utilizan para realizar operaciones en los valores y variables, asignar valores o comparar datos.
+
+---
+
+### 1. Operadores Aritméticos
+
+Permiten realizar operaciones matemáticas básicas entre valores numéricos.
+
+```javascript
+let a = 10;
+let b = 5;
+
+console.log(a + b); // Suma (15)
+console.log(a - b); // Resta (5)
+console.log(a * b); // Multiplicación (50)
+console.log(a / b); // División (2)
+
+console.log(a % b); // Módulo o residuo de la división (0)
+console.log(a ** b); // Exponente o potencia (10 elevado a la 5)
+```
+
+---
+
+### 2. Incremento y Decremento
+
+Operadores abreviados para sumar o restar una unidad ($1$) a una variable numérica.
+
+```javascript
+let a = 5;
+let b = 5;
+
+a++; // Incrementa a en 1
+console.log(a); // 6
+
+b--; // Decrementa b en 1
+console.log(b); // 4
+```
+
+---
+
+### 3. Operadores de Asignación
+
+Sirven para almacenar un valor en una variable, combinando opcionalmente una operación aritmética.
+
+```javascript
+let myVariable = 2;
+console.log(myVariable); // 2
+
+myVariable += 2; // Equivalente a: myVariable = myVariable + 2
+console.log(myVariable); // 4
+
+myVariable -= 2; // myVariable = 4 - 2 = 2
+myVariable *= 2; // myVariable = 2 * 2 = 4
+myVariable /= 2; // myVariable = 4 / 2 = 2
+myVariable %= 2; // myVariable = 2 % 2 = 0
+myVariable **= 2; // myVariable = 0 ** 2 = 0
+```
+
+---
+
+### 4. Operadores de Comparación
+
+Evalúan dos valores y devuelven un booleano (`true` o `false`) según el resultado de la comparación.
+
+```javascript
+let a = 5;
+let b = 10;
+
+console.log(a > b);  // Mayor que -> false
+console.log(a < b);  // Menor que -> true
+console.log(a >= b); // Mayor o igual que -> false
+console.log(a <= b); // Menor o igual que -> true
+
+// Igualdad y Desigualdad por valor (con coerción de tipos)
+console.log(a == 5);     // true
+console.log(a == "5");   // true (convierte el string a número)
+console.log(a != 6);     // Desigualdad por valor -> true
+
+// Igualdad y Desigualdad Estricta (compara tanto valor como tipo de dato)
+console.log(a === 5);    // true
+console.log(a === "5");  // false (el tipo es diferente: number vs string)
+console.log(a !== "5");  // Desigualdad estricta -> true
+
+// Casos especiales de comparaciones de tipo flexible (coerción)
+console.log(0 == false);     // true
+console.log(1 == false);     // false
+console.log(0 == "");        // true
+console.log(0 == " ");       // true
+console.log(0 == "Hola");    // false
+console.log(0 === "");       // false (estricto no coerce tipos)
+console.log(undefined == null);  // true
+console.log(undefined === null); // false
+```
+
+---
+
+### 5. Operadores Lógicos
+
+Permiten combinar condiciones booleanas y evaluar expresiones complejas.
+
+```javascript
+// AND (&&) - Devuelve true solo si AMBAS expresiones son verdaderas
+console.log(5 > 10 && 15 > 20); // false && false -> false
+console.log(5 < 10 && 15 < 20); // true && true -> true
+console.log(5 < 10 && 15 > 20); // true && false -> false
+
+// OR (||) - Devuelve true si al menos UNA expresión es verdadera
+console.log(5 > 10 || 15 > 20); // false || false -> false
+console.log(5 < 10 || 15 > 20); // true || false -> true
+
+// Combinación de operadores lógicos
+console.log(5 > 10 && 15 > 20 || 30 < 40); // (false && false) || true -> true
+
+// NOT (!) - Niega el valor booleano actual
+console.log(!true);  // false
+console.log(!false); // true
+console.log(!(5 > 10 && 15 > 20)); // ¡Niega el resultado de la expresión interna! -> true
+```
+
+---
+
+### 6. Operadores Ternarios
+
+Es una alternativa compacta a la estructura condicional clásica `if-else`. Su sintaxis es:
+`condicion ? valorSiEsVerdadero : valorSiEsFalso`
+
+```javascript
+const isRaining = true;
+
+isRaining 
+  ? console.log("Está lloviendo") 
+  : console.log("No está lloviendo");
+```
