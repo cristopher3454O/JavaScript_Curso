@@ -430,3 +430,104 @@ console.log(dayName); // Martes
 
 #### CODIGO
 - [Condicionales](./Basic/08-Condicionales.js)
+
+# 10 - Arrays (Arreglos) en JavaScript
+
+Un **Array** (o arreglo) es una estructura de datos que nos permite almacenar múltiples elementos (de diferentes tipos de datos como números, strings, booleanos, etc.) en una sola variable, organizados de manera secuencial mediante índices numéricos que comienzan desde el $0$.
+
+## 1. Declaración e Inicialización
+
+Podemos declarar un array vacío y posteriormente asignarle o modificar sus valores.
+
+```javascript
+// Declaración de un array vacío
+let myArray = [];
+
+// Inicialización con valores numéricos
+myArray = [1, 2, 3, 4];
+console.log(myArray);
+
+// Modificación de elementos mediante sus índices
+myArray[0] = "Te quiero";
+myArray[1] = "Te amo";
+myArray[2] = "Eres el amor ";
+myArray[3] = "De mi vida....";
+console.log(myArray);
+
+```
+
+## 2. Métodos Comunes para Modificar Arrays
+
+JavaScript cuenta con métodos integrados para añadir o eliminar elementos fácilmente de un arreglo.
+
+### Agregar y Eliminar al Final (`push` y `pop`)
+* **`push()`**: Agrega uno o más elementos al final del array.
+* **`pop()`**: Elimina y devuelve el último elemento del array.
+
+```javascript
+// Agregar un elemento al final
+myArray.push("Camilo");
+console.log(myArray);
+
+// Eliminar el último elemento
+myArray.pop();
+console.log(myArray);
+
+console.log("Eliminado: " + myArray.pop());
+
+```
+
+### Agregar y Eliminar al Inicio (`shift` y `unshift`)
+* **`shift()`**: Elimina y devuelve el primer elemento del array.
+* **`unshift()`**: Agrega uno o más elementos al principio del array.
+
+```javascript
+// Eliminar el primer elemento (Nota: usando pop en el ejemplo original, pero el concepto de shift elimina el inicio)
+console.log("Primero eliminado: " + myArray.shift());
+
+// Agregar elementos al principio del array
+myArray.unshift("Regresa", "los días son tristes", "¿Por qué?");
+console.log(myArray);
+
+```
+
+## 3. Propiedad de Longitud y Limpieza
+
+* **`length`**: Permite conocer cuántos elementos contiene el arreglo.
+* **Limpiar un array**: Se puede vaciar asignando un array vacío `[]` o fijando su `length = 0`.
+
+```javascript
+// Longitud del arreglo
+console.log("Longitud del arreglo: " + myArray.length);
+
+// Formas de limpiar / vaciar el array
+myArray = [];
+myArray.length = 0;
+console.log(myArray);
+
+```
+
+## 4. Métodos Avanzados de Manipulación (`slice` y `splice`)
+
+```javascript
+myArray = ["Te extraño", "te quiero", "vuelve", "realmente", "te quiero"];
+
+// slice(): Regresa un nuevo arreglo con una porción extraída (sin modificar el original)
+let newArreglo = myArray.slice(3, 5); // Desde el índice 3 hasta antes del 5
+console.log(newArreglo);
+
+// splice(inicio, cantidad): Elimina elementos a partir de un índice
+newArreglo = myArray.splice(1, 3);
+console.log(newArreglo);
+
+// splice con reemplazo o inserción: (inicio, cantidadAEliminar, nuevoElemento)
+newArreglo = myArray.splice(1, 2, "Amor?");
+console.log(myArray);
+
+```
+
+#### CODIGO
+- [Array JavaScript](./Basic/10-Arrays.js)
+
+
+
