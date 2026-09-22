@@ -21,7 +21,49 @@ Bienvenido a mi repositorio de apuntes de JavaScript. Esta guía recopila los fu
   - [7. BigInt](#6-symbol)
   - [8. Operador Typeof](#8-operador-typeof)
 
+<!--OPERADORES -->
+- [03 - Operadores en JavaScript](#03---operadores-en-javascript)
+  - [1. Operadores Aritméticos](#1-operadores-aritméticos)
+  - [2. Incremento y Decremento](#2-incremento-y-decremento)
+  - [3. Operadores de Asignación](#3-operadores-de-asignación)
+  - [4. Operadores de Comparación](#4-operadores-de-comparación)
+  - [5. Operadores Lógicos](#5-operadores-lógicos)
+  - [6. Operadores Ternarios](#4-operador-ternario)
 
+
+<!--CADENAS DE TEXTO STRING-->
+- [06 - Strings (Cadenas de Texto) en JavaScript](#1-string-cadenas-de-texto)
+  - [1. Declaración y Concatenación](#1-declaración-y-concatenación)
+  - [2. Propiedades y Acceso a Caracteres](#2-propiedades-y-acceso-a-caracteres)
+  - [3. Métodos Comunes en Strings](#3-métodos-comunes-en-strings)
+  - [4. Templates Literals (Plantillas de Texto)](#4-templates-literals-plantillas-de-texto)
+
+
+<!--ESTRUCTURAS CONDICIONALES-->
+-[08 - Estructuras Condicionales en JavaScript](#08---estructuras-condicionales-en-javascript)
+  - [1. Condicional if](#1-condicional-if)
+  - [2. Condicional if - else](#2-condicional-if---else)
+  - [3. Condicional Anidado if - else if - else](#3-condicional-anidado-if---else-if---else)
+  - [4. Operador Ternario](#4-operador-ternario)
+  - [5. Condicional switch](#5-condicional-switch)
+
+- [Estructuras de Datos](#estructuras-de-datos)
+  - [10 - Arrays (Arreglos) en JavaScript](#10---arrays-arreglos-en-javascript)
+  -[1. Declaración e Inicialización](#1-declaración-e-inicialización)
+  - [2. Métodos Comunes para Modificar Arrays](#2-métodos-comunes-para-modificar-arrays)
+    - [Agregar y Eliminar al Final (push y pop)](#agregar-y-eliminar-al-final-push-y-pop)
+    - [Agregar y Eliminar al Inicio (shift y unshift)](#agregar-y-eliminar-al-final-push-y-pop)
+  - [3. Propiedad de Longitud y Limpieza](#3-propiedad-de-longitud-y-limpieza)
+  - [4. Métodos Avanzados de Manipulación (slice y splice)](#4-métodos-avanzados-de-manipulación-slice-y-splice)
+
+- [11 - Sets (Conjuntos) en JavaScript](#11---sets-conjuntos-en-javascript)
+  - [1. Declaración e Inicialización](#1-declaración-e-inicialización-set)
+  - [2. Métodos Comunes (Agregar y Eliminar)](#2-métodos-comunes-agregar-y-eliminar)
+  - [3. Comprobación de Existencia y Tamaño](#3-comprobación-de-existencia-y-tamaño)
+  - [4. Conversiones entre Set y Array](#4-conversiones-entre-set-y-array)
+  - [5. Característica Principal: Elementos Únicos](#5-característica-principal-elementos-únicos)
+  
+    
 
 
 
@@ -565,7 +607,7 @@ console.log(myArray);
 
 Un **Set** (conjunto) es una estructura de datos coleccional similar a un array, con la gran diferencia de que **no permite almacenar elementos duplicados** y los elementos no están indexados por posiciones numéricas fijas.
 
-### 1. Declaración e Inicialización
+### 1. Declaración e Inicialización Set
 
 Podemos declarar un Set vacío o inicializarlo directamente pasando un iterable (como un array).
 
