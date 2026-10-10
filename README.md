@@ -63,7 +63,12 @@ Bienvenido a mi repositorio de apuntes de JavaScript. Esta guía recopila los fu
   - [4. Conversiones entre Set y Array](#4-conversiones-entre-set-y-array)
   - [5. Característica Principal: Elementos Únicos](#5-característica-principal-elementos-únicos)
   
-    
+- [12 - Maps Maps (Mapas) en JavaScript](#12---maps-mapas-en-javascript)
+  - [1. Declaración e Inicialización Map](#1-declaración-e-inicialización-map)
+  - [2. Métodos Comunes (Agregar, Buscar y Eliminar)](#2-métodos-comunes-agregar-buscar-y-eliminar)
+  - [3. Comprobación de Existencia y Tamaño](#3-comprobación-de-existencia-y-tamaño)
+  - [4. Métodos de Iteración (Keys, Values y Entries)](#4-métodos-de-iteración-keys-values-y-entries)
+  - [5. Limpieza Total del Map](#5-limpieza-total-del-map)
 
 
 
@@ -690,3 +695,91 @@ console.log(mySet); // Solo aparecerá una vez "Alexander"
 ### CODIGO
 
 - [Sets](./Basic/11-Sets.js)
+
+## 12 - Maps (Mapas) en JavaScript
+
+Un **Map** (mapa) es una estructura de datos que almacena colecciones de elementos organizados en pares de **clave-valor**. A diferencia de los objetos comunes, las claves en un Map pueden ser de cualquier tipo de datos (funciones, objetos o cualquier valor primitivo) y mantienen el orden original de inserción de los elementos.
+
+### 1. Declaración e Inicialización Map
+
+Podemos declarar un Map vacío o inicializarlo directamente pasando un iterable que contenga sub-arrays con la estructura `[clave, valor]`.
+
+```javascript
+// Declaración de un Map vacío
+let myMap = new Map();
+console.log(myMap);
+
+// Inicialización con valores iniciales
+myMap = new Map([
+    ["Name", "Cristopher"],
+    ["Edad", "18"],
+    ["Ciudad: ", "Mexico"]
+]);
+console.log(myMap);
+```
+
+### 2. Métodos Comunes (Agregar, Buscar y Eliminar)
+
+* **`set()`**: Agrega un nuevo par clave-valor si la clave no existe, o actualiza (modifica) el valor si la clave ya se encuentra en el Map.
+* **`get()`**: Recupera el valor asociado a una clave específica. Si la clave no existe en el Map, devuelve `undefined`.
+* **`delete()`**: Elimina un elemento por su clave. Retorna `true` si el elemento existía y fue eliminado, o `false` en caso contrario.
+
+```javascript
+// set: Agregar nuevos valores o modificar mediante su clave
+myMap.set("Name", "Alexander"); // Modifica el valor de "Name"
+myMap.set("Alias", "Chino");     // Agrega una nueva clave-valor
+console.log(myMap);
+
+// get: Buscar valores por su clave
+console.log(myMap.get("Name"));      // Muestra: Alexander
+console.log(myMap.get("Alexander")); // Muestra: undefined (se debe buscar por clave, no por valor)
+
+// delete: Eliminar un elemento por su clave
+myMap.delete("Name");
+console.log(myMap);
+```
+
+### 3. Comprobación de Existencia y Tamaño
+
+* **`has()`**: Permite verificar si una clave específica existe dentro del Map, devolviendo un valor booleano (`true` o `false`).
+* **`size`**: Propiedad (no es una función) que devuelve la cantidad total de pares clave-valor que contiene el Map.
+
+```javascript
+// has: Comprobar si existe una clave
+console.log(myMap.has("Alias")); // Regresa: true
+
+// size: Conocer la longitud o tamaño del Map
+console.log(myMap.size);
+```
+
+### 4. Métodos de Iteración (Keys, Values y Entries)
+
+Los Maps nos ofrecen métodos nativos para extraer partes específicas de su colección en forma de iteradores.
+
+* **`keys()`**: Devuelve todas las claves del Map.
+* **`values()`**: Devuelve todos los valores del Map.
+* **`entries()`**: Devuelve un iterador con todos los pares `[clave, valor]`.
+
+```javascript
+// keys: Obtener todas las claves
+console.log(myMap.keys());
+
+// values: Obtener todos los valores
+console.log(myMap.values());
+
+// entries: Obtener los pares clave-valor
+console.log(myMap.entries());
+```
+
+### 5. Limpieza Total del Map
+
+* **`clear()`**: Elimina absolutamente todos los elementos del Map de un solo golpe, dejándolo completamente vacío.
+
+```javascript
+// clear: Vaciar el mapa por completo
+myMap.clear();
+console.log(myMap); // Muestra: Map(0) {}
+```
+### CODIGO
+- [Maps](./Basic/12-Maps.js)
+
