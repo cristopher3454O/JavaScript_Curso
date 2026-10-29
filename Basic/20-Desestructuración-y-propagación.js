@@ -54,5 +54,90 @@ console.log(alias)
 
 
 //sintaxis objects con valores predeterminados
+let {nombre2, edad2, alias2, email = "cristo@gmail.com"} = persona
+console.log(nombre2) //no existe
+console.log(edad2) //no existe
+console.log(alias2) //no existe
+console.log(email)
+
+//sintaxis object con nuevos nombres de variables
+console.log("sintaxis object con nuevos nombres de variables")
+let { alias: alias3, name : name3, age: age3} = persona
+console.log(name3)
+console.log(age3)
+console.log(alias3)
+
+//Object anidados
+console.log("Object anidados")
+
+console.log("Object anidados")
+let persona3 = {
+    name : "Cristopher",
+    age : 18,
+    alias : "Chino",
+    walk: function (){
+        console.log("La persona camina")
+    },
+    job : {
+        name: "Estudiante, proximamente Ing",
+        exp: 1,
+        work: function (){
+            console.log(`la persona de${this.age} años de experencia trabaja. `)
+        }
+    }
+}
+
+let {name: name4, job: {name : jobName}} = persona3
+console.log(name4)
+console.log(jobName)
+
+// Propagacion
+
+
+console.log("Propagación")
+
+//sintaxis arrays
+console.log("sintaxis arrays")
+
+let myArray2 = [...myArray, 5, 6]
+console.log(myArray2)
+
+// Copia de Arrays
+console.log("Copia de Arrays")
+
+let myArray3 = [...myArray]
+console.log(myArray3)
+
+// combinacion de Arrays
+
+console.log("combinacion de Arrays")
+
+let myArray4 = [...myArray, ...myArray2, ...myArray3]
+console.log(myArray4)
+
+// sintaxis objects
+console.log("sintaxis objects")
+
+let persona4 = {...persona, email: "cris@gmail.com"}
+console.log(persona4)
+
+
+// Copia de Objcets
+
+console.log("Copia de Objcets")
+
+
+let persona5 = {...persona}
+console.log(persona5)
+
+
+
+
+
+
+
+
+
+
 
 
