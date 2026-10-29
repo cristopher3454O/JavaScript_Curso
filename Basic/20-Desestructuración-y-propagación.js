@@ -46,7 +46,7 @@ console.log(myValue10)
 console.log(myValue13)
 
 // sintaxis objects
-console.log("Destructuración de obejtos")
+console.log("Destructuración de obejetos")
 let { name, age, alias} = persona
 console.log(name)
 console.log(age)
