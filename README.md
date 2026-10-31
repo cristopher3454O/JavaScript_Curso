@@ -1275,3 +1275,173 @@ console.log(persona5)
 ### CODIGO
 
 - [Destructuración y Propagación](./Basic/20-Desestructuración-y-propagación.js)
+
+
+## 17 - Classes (Clases) en JavaScript
+
+Una **Clase** es una plantilla o molde de programación orientada a objetos (POO) que se utiliza para crear múltiples objetos con la misma estructura y comportamiento. Introducidas en ES6, las clases en JavaScript encapsulan datos (propiedades) y código para manipularlos (métodos), funcionando como una envoltura sobre el sistema de prototipos tradicional.
+
+### 1. Sintaxis, Instanciación y Valores por Defecto
+
+Para definir una clase utilizamos la palabra clave `class` acompañada de un método especial llamado `constructor`, el cual se ejecuta automáticamente al crear una nueva instancia con el operador `new`.
+
+```javascript
+class Person {
+    constructor (name, age, alias){
+        this.name = name;
+        this.age = age;
+        this.alias = alias;
+    }
+}
+
+// Instanciación de objetos usando la sintaxis 'new'
+let person = new Person("Cris", 28, "el ing")
+let person2 = new Person("Sofia", 12, "soficita")
+
+console.log(person)
+console.log(typeof person) // Muestra: "object"
+
+// Clases con parámetros por defecto en el constructor
+class DefaultPerson {
+    constructor(name = "sin nombre", age = 0, alias = "sin alias"){
+        this.name = name;
+        this.age = age;
+        this.alias = alias;
+    }
+}
+let person3 = new DefaultPerson("Cami", 34)
+console.log(person3) // El alias tomará "sin alias" por defecto
+```
+
+### 2. Acceso, Modificación y Funciones (Métodos)
+
+Al igual que con los objetos literales, podemos leer o reescribir propiedades utilizando la notación por punto o corchetes, así como invocar las funciones definidas dentro del cuerpo de la clase.
+
+```javascript
+// Acceso y modificación de propiedades
+console.log(person3.alias)
+console.log(person3["alias"])
+person3.alias = "PEDRO" // Modificación del valor
+
+// Declaración y uso de métodos en una clase
+class PersonaWithMethod {
+    constructor(name , age, alias){
+        this.name = name;
+        this.age = age;
+        this.alias = alias;
+    }
+    walk(){
+        console.log("La persona camina. ")
+    }
+}
+
+let person4 = new PersonaWithMethod("Cristopher", 12, "El chinote")
+person4.walk() // Ejecución del método
+```
+
+### 3. Propiedades Privadas
+
+JavaScript permite proteger u ocultar propiedades para que no puedan ser leídas ni modificadas directamente desde fuera de la clase. Esto se logra anteponiendo el símbolo **`#`** al nombre del atributo (tanto al declararlo al inicio de la clase como dentro del constructor).
+
+```javascript
+class PrivatePerson {
+    #bank // Declaración obligatoria de la propiedad privada
+
+    constructor (name, age , alias , bank){
+        this.name = name;
+        this.age = age;
+        this.alias = alias;
+        this.#bank = bank;
+    }
+    pay(){
+        this.#bank // Accesible únicamente desde dentro de la clase
+    } 
+}
+let person5 = new PrivatePerson("Chikis ", 21, "Angry", "DSFDFG13454TGDF")
+
+/* Intentar acceder o cambiar la propiedad privada causará un error:
+console.log(person5.bank) 
+person5.bank = "new bank" */
+```
+
+### 4. Métodos de Acceso (Getters y Setters)
+
+Los **Getters (`get`)** y **Setters (`set`)** permiten interceptar la lectura y escritura de propiedades (comúnmente privadas), actuando como puentes controlados para validar o transformar la información simulando que accedemos a un atributo normal.
+
+```javascript
+class GetSetPerson{
+    #name; #age; #alias; #bank;
+
+    constructor(name, age, alias, bank){
+        this.#name = name;
+        this.#age = age;
+        this.#alias = alias;
+        this.#bank = bank;
+    }
+    // Getter: Devuelve el valor simulando ser una propiedad de lectura
+    get name(){
+        return this.#name
+    }
+    // Setter: Asigna un nuevo valor simulando ser una asignación de propiedad
+    set bank(bank){
+        this.#bank = bank;
+    }
+    get bank(){
+        return this.#bank
+    }
+}
+let person6 = new GetSetPerson("Angry", 21, "chikis", "ERTYUIO")
+console.log(person6.name) // Llama al método 'get name()' sin usar paréntesis
+
+person6.bank = "new ASDFGHJK" // Llama al método 'set bank()' de manera implícita
+console.log("Valor cambiado usando get y set :", person6.bank)
+```
+
+### 5. Herencia y Reutilización de Código
+
+La herencia permite crear una clase hija a partir de una clase padre utilizando la palabra clave `extends`. La clase hija hereda todas las propiedades y métodos del padre, pudiendo añadir los suyos propios o usar `super()` para invocar y pasarle parámetros al constructor del padre.
+
+```javascript
+// Clase Padre (Base)
+class Animal {
+    constructor(name){
+        this.name = name
+    }
+    sound(){
+        console.log("El animal emite un sonido genérico")
+    }
+}
+
+// Clase Hija que extiende de Animal y redefine comportamientos (Polimorfismo)
+class Dog extends Animal{
+    sound(){
+        console.log("!Guaaag!") // Sobrescribe el método del padre
+    }
+    run(){
+        console.log("El perro corre")
+    }
+    love(){
+        console.log("El perro quiere sentirse amado")
+    }
+}
+
+// Clase Hija que añade nuevas propiedades llamando al constructor padre con super()
+class Fish extends Animal{
+    constructor(name, size){
+        super(name) // Invoca obligatoriamente al constructor de Animal
+        this.size = size
+    }
+    swim(){
+        console.log("El pez nada")
+    }
+}
+
+let myDog = new Dog("CrisDog")
+myDog.run()
+myDog.sound() // Imprime "!Guaaag!" en lugar del mensaje genérico
+myDog.love()
+```
+
+### CODIGO
+
+- [Clases JavaScript](./Basic/22-Clases.js)
