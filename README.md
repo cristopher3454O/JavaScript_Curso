@@ -1034,3 +1034,132 @@ myMap.forEach((value) => console.log(value))
 ### CODIGO
 
 - [Functions JavaScript](./Basic/16-Funciones.js)
+
+
+## 15 - Objects (Objetos) en JavaScript
+
+Un **Objeto** es una estructura de datos que nos permite almacenar colecciones de datos complejos organizados en pares de **clave-valor** (conocidos como propiedades y métodos). A diferencia de los arrays que usan índices numéricos, los objetos utilizan nombres de propiedades (strings) para organizar y acceder a la información.
+
+### 1. Sintaxis y Creación de un Objeto
+
+Un objeto se crea utilizando llaves `{}` y declarando propiedades dentro de él mediante la estructura `clave: valor`.
+
+```javascript
+// Sintaxis de un objeto básico
+let persona = {
+    name: "Cristopher",
+    age: 18,
+    alias: "Chino"
+}
+```
+
+### 2. Acceso y Modificación de Propiedades
+
+JavaScript nos permite interactuar con los datos de un objeto utilizando dos sintaxis diferentes:
+
+* **Notación por punto (`.`)**: Es la forma más común y legible de acceder o modificar propiedades.
+* **Notación por corchetes (`[]`)**: Útil cuando el nombre de la propiedad se encuentra dentro de una variable o contiene caracteres especiales.
+
+```javascript
+// Acceso a propiedades
+console.log(persona.name)     // Notación por punto
+console.log(persona["name"])  // Notación por corchetes
+
+// Modificación de propiedades existentes
+persona.name = "Alexander"
+console.log(persona.name)
+
+persona.age = "37"
+console.log(persona.age)
+
+// Agregar nuevas propiedades dinámicamente
+persona.email = "cris@gmail.com"
+persona["age"] = 37
+console.log(persona)
+```
+
+### 3. Eliminación de Propiedades
+
+Podemos remover por completo una propiedad de un objeto utilizando el operador `delete`.
+
+```javascript
+// Eliminación de una propiedad
+delete persona.age
+console.log(persona) // El objeto ya no incluye la clave 'age'
+```
+
+### 4. Métodos y Anidación de Objetos
+
+* **Métodos**: Son funciones declaradas dentro de un objeto que definen las acciones o comportamientos que este puede realizar.
+* **Anidación (Objetos Anidados)**: Un objeto puede contener a otros objetos dentro de sus propiedades para representar estructuras de datos más complejas.
+
+```javascript
+// Objeto con un método (función integrada)
+let persona2 = {
+    name: "Cristopher",
+    age : 18,
+    alias: "Camilo",
+    walk: function(){
+        console.log("la persona camina")
+    }
+}
+persona2.walk() // Ejecución del método
+
+// Anidación de objetos
+let persona3 = {
+    name: "Cristopher",
+    age : 18,
+    alias: "Camilo",
+    walk: function(){
+        console.log("la persona camina")
+    },
+    job: {
+        name: "Progamador",
+        exp: 15,
+        work: function(){
+            console.log("la persona trabaja")
+        }
+    }
+}
+persona3.job.work() // Acceso al método del objeto anidado
+```
+
+### 5. Comparación, Iteración y Constructores Básicos
+
+* **Igualdad**: Al comparar propiedades primitivas se evalúa su valor. Al comparar objetos completos, se evalúa su referencia en memoria (dos objetos con datos idénticos no son iguales si ocupan espacios de memoria distintos).
+* **Iteración (`for...in`)**: Estructura de control especial diseñada para recorrer todas las claves de un objeto.
+* **Funciones Constructoras**: Una forma clásica en JavaScript para instanciar múltiples objetos con una misma estructura antes de la llegada de las clases de ES6.
+
+```javascript
+let persona4 = {
+    name: "Cristopher",
+    age: 18,
+    alias: "Chino"
+}
+
+// Comparación de propiedades específicas
+console.log(persona.name == persona4.name)
+
+// Iteración de claves y valores con for...in
+for (let key in persona4){
+    console.log(key + ": " + persona4[key])
+}
+
+// Función constructora tradicional (Debería ser una clase moderna)
+function Person(name, age) {
+    this.name = name
+    this.age = age
+}
+
+let person5 = new Person("Cristopher", 37)
+console.log(person5)
+console.log(person5.name)
+
+// Comprobación de tipo de dato
+console.log(typeof person5) // Muestra: "object"
+console.log(typeof person4) // Muestra: "object"
+```
+
+### CODIGO
+
+- [Objects JavaScript](./Basic/18-Objetos.js)
