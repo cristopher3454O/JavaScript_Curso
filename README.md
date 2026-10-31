@@ -888,3 +888,149 @@ for (let i = 1; i <= 5; i++){
 ### CODIGO
 
 - [Loops JavaScript](./Basic/14-Bucles.js)
+
+
+## 14 - Functions (Funciones) en JavaScript
+
+Una **Función** es un bloque de código reutilizable y estructurado que realiza una tarea específica o calcula un valor. Se define una sola vez y puede ser ejecutado (o "llamado") en cualquier parte de nuestro programa las veces que sea necesario.
+
+### 1. Declaración e Inicialización Básica
+
+Una función tradicional se declara utilizando la palabra clave `function`, seguida de un nombre único y un bloque de código entre llaves.
+
+```javascript
+// Inicialización de una función básica
+function myFunc(){
+    console.log("Hola función")
+}
+
+// Llamamos a la función múltiples veces (usando un bucle)
+for (let i = 0; i <=5; i++){
+    myFunc()
+}
+```
+
+### 2. Tipos de Funciones (Parámetros, Anónimas y Arrow)
+
+JavaScript ofrece diferentes formas de estructurar y escribir funciones dependiendo de la necesidad:
+
+* **Con Parámetros**: Permiten pasarle datos de entrada a la función para que trabaje de forma dinámica.
+* **Funciones Anónimas**: Funciones que no tienen un nombre propio y se almacenan directamente dentro de una variable.
+* **Arrow Functions (Funciones Flecha)**: Una sintaxis moderna y compacta que omite la palabra `function`. Si solo ejecutan una línea, pueden omitir también las llaves `{}`.
+
+```javascript
+// Función con parámetros
+function myfuncParametros(name){
+    console.log(`Holaaa ${name}`)
+}
+myfuncParametros("Cristopher")
+
+// Funciones anónimas
+const myFunc2 = function(name){
+    console.log(`Holaaa ${name}`)
+}
+myFunc2("Alexxandeer")
+
+// Arrow Function tradicional (con llaves)
+const myFunc3 = (name) => {
+    console.log(`Holaaa ${name}`)
+}
+
+// Arrow Function compacta (en una sola línea)
+const myFunc4 = (name) => console.log(`Holaaa ${name}`)
+
+myFunc3("Camilo")
+myFunc4("breceda")
+```
+
+### 3. Parámetros por Defecto
+
+Cuando llamamos a una función y omitimos argumentos, los parámetros toman el valor de `undefined`, lo que puede romper operaciones matemáticas. Para evitarlo, podemos asignarles valores por defecto directamente en la firma de la función.
+
+```javascript
+// Problema al omitir parámetros (resultado NaN)
+function sum(a, b) {
+    console.log(a + b)
+}
+sum(5, 10) // 15
+sum(5)     // NaN (5 + undefined)
+sum()      // NaN
+
+// Solución con parámetros por defecto
+function defaultSum(a = 0, b = 0) {
+    console.log(a + b)
+}
+defaultSum()             // 0
+defaultSum(5)            // 5
+defaultSum(5, 10)        // 15
+defaultSum(undefined, 5) // 5 (undefined activa el valor por defecto)
+```
+
+### 4. Retorno de Valores
+
+Las funciones pueden procesar datos y devolver un resultado al flujo principal del programa utilizando la palabra clave `return`. Cuando un `return` se ejecuta, la función finaliza de inmediato.
+
+```javascript
+// Retorno de valores
+function mult(a, b){
+    return a * b
+}
+let result = mult(3, 5)
+console.log(result) // Muestra: 15
+```
+
+### 5. Funciones Anidadas y de Orden Superior
+
+* **Funciones Anidadas**: Funciones declaradas dentro de otra función. La función interna está protegida y solo es accesible desde el ámbito de la función externa.
+* **Funciones de Orden Superior**: Funciones que reciben otra función como argumento o devuelven una función como resultado.
+
+```javascript
+// Funciones anidadas
+function extern(){
+    console.log("Hola externo")
+    function internal(){
+        console.log("Interno")
+    }
+    internal() // Se ejecuta adentro
+}
+extern()
+
+// Funciones de orden superior
+function applyFunc(func, parametro){
+    func(parametro)
+}
+applyFunc(myFunc4, "Funcion de orden superior")
+```
+
+### 6. Recorrido de Colecciones con `forEach`
+
+El método `forEach` es una función de orden superior integrada en JavaScript que permite iterar rápidamente sobre los elementos de Arrays, Sets y Maps pasando una función callback (ya sea anónima o tipo flecha).
+
+```javascript
+// Definición de las colecciones de datos
+const myArray = [1, 2, 3, 4]
+const mySet = new Set(["Brais", "Moure", "mouredev", 37, true, "braismoure@mouredev.com"])
+const myMap = new Map([
+    ["name", "Brais"],
+    ["email", "braismoure@mouredev.com"],
+    ["age", 37]
+])
+
+// forEach en Array usando función anónima
+myArray.forEach(function (value) {
+    console.log(value)
+})
+
+// forEach en Array usando Arrow Function
+myArray.forEach((value) => console.log(value))
+
+// forEach en Set
+mySet.forEach((value) => console.log(value))
+
+// forEach en Map (obtiene los valores)
+myMap.forEach((value) => console.log(value))
+```
+
+### CODIGO
+
+- [Functions JavaScript](./Basic/16-Funciones.js)
