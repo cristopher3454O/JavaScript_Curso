@@ -1445,3 +1445,127 @@ myDog.love()
 ### CODIGO
 
 - [Clases JavaScript](./Basic/22-Clases.js)
+
+
+## 18 - Errors and Exceptions (Errores y Excepciones) en JavaScript
+
+Una **Excepción** es un error que ocurre durante la ejecución de un programa (tiempo de ejecución) e interrumpe el flujo normal de las instrucciones. JavaScript nos proporciona mecanismos estructurados para capturar estos fallos de forma segura, evitando que toda la aplicación colapse.
+
+### 1. Captura de Errores (`try-catch`)
+
+El bloque `try` envuelve el código que podría fallar. Si ocurre un error, la ejecución de ese bloque se detiene inmediatamente y el control pasa al bloque `catch`.
+
+```javascript
+let myObject
+
+// try-catch básico
+try {
+    // Código que se intenta ejecutar
+    console.log(myObject.email) // Lanza error porque myObject es undefined
+    console.log("Finaliza la ejecución sin errores")
+} catch {
+    // Se ejecuta únicamente si algo falla en el try
+    console.log("Se ha producido un error")
+}
+
+// Captura del objeto de error para acceder a sus detalles (.message)
+try {
+    console.log(myObject.email)
+} catch (error) {
+    console.log("Se ha producido un error: ", error.message)
+}
+```
+
+### 2. El Bloque `finally`
+
+El bloque `finally` se añade al final de una estructura `try-catch` y contiene código que **siempre se ejecutará**, sin importar si el programa se completó con éxito o si se capturó una excepción.
+
+```javascript
+try {
+    console.log(myObject.email)
+} catch (error) {
+    console.log("Se ha producido un error: ", error.message)
+} finally {
+    console.log("Este código se ejecutará siempre !!")
+}
+```
+
+### 3. Lanzamiento Manual de Errores (`throw`)
+
+Podemos forzar el lanzamiento de una excepción de forma manual utilizando la palabra clave `throw`, deteniendo el flujo del programa a menos que sea capturado por un `try-catch`. Se suelen lanzar objetos del sistema como `Error`, `TypeError`, entre otros.
+
+```javascript
+// Ejemplo de lanzamiento manual básico
+// throw new Error("Se ha producido un error")
+
+function sumIntegers(a, b) {
+    // Lanzar un TypeError si los argumentos no son de tipo 'number'
+    if (typeof a !== "number" || typeof b !== "number") {
+        throw new TypeError("Esa operación solo suma números")
+    }
+    // Lanzar un Error genérico si los números no son enteros
+    if (!Number.isInteger(a) || !Number.isInteger(b)) {
+        throw new Error("Esta operación solo suma números ")
+    }
+    // Lanzar un error personalizado si alguno de los números es cero
+    if (a == 0 || b == 0) {
+        throw new SumZeroIntegerError("Se está intentando sumaaar", a, b)
+    }
+    return a + b
+}
+
+try {
+    console.log(sumIntegers(5, 10))
+    console.log(sumIntegers("5, 10")) // Lanza excepción por el string
+} catch (error) {
+    console.log("Se ha producido un error: ", error.message)
+}
+```
+
+### 4. Capturar Múltiples Tipos de Errores (`instanceof`)
+
+Dentro de un único bloque `catch`, podemos identificar qué clase de error ocurrió utilizando el operador `instanceof` para reaccionar de forma específica según el tipo de fallo.
+
+```javascript
+try {
+    console.log(sumIntegers("5", 10))
+} catch (error) {
+    if (error instanceof TypeError) {
+        console.log("Se ha producido un error de tipo: ", error.message)
+    } else if (error instanceof Error) {
+        console.log("Se ha producido un error: ", error.message)
+    }
+}
+```
+
+### 5. Creación de Excepciones Personalizadas
+
+Podemos extender la clase nativa `Error` mediante herencia (`extends`) para construir nuestros propios tipos de errores con propiedades y métodos adicionales exclusivos para nuestra aplicación.
+
+```javascript
+// Creación de una clase de error propia
+class SumZeroIntegerError extends Error {
+    constructor(message, a, b) {
+        super(message) // Pasa el mensaje al constructor de la clase Error
+        this.a = a
+        this.b = b
+    }
+    printNumbers() {
+        console.log(this.a, " + ", this.b)
+    }
+}
+
+try {
+    console.log(sumIntegers(0, 10)) // Detonará nuestra excepción personalizada
+} catch (error) {
+    console.log("Se ha producido un error personalizado: ", error.message)
+    // Validación de seguridad para asegurar que el método existe antes de invocarlo
+    if (error instanceof SumZeroIntegerError) {
+        error.printNumbers()
+    }
+}
+```
+
+### CODIGO
+
+- [Exceptions JavaScript](./Basic/24-Expeciones.js)
