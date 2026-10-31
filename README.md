@@ -783,3 +783,108 @@ console.log(myMap); // Muestra: Map(0) {}
 ### CODIGO
 - [Maps](./Basic/12-Maps.js)
 
+## 13 - Loops (Bucles) en JavaScript
+
+Un **Loop** (o bucle) es una estructura de control que nos permite repetir un bloque de código múltiples veces de manera automática, siempre y cuando se cumpla una condición específica. Son fundamentales para recorrer colecciones de datos y evitar la repetición manual de código.
+
+### 1. El Bucle `for` Tradicional
+
+El bucle `for` se utiliza cuando sabemos de antemano cuántas veces queremos que se ejecute el código. Consta de tres partes: inicialización, condición e incremento/decremento.
+
+```javascript
+// Bucle for básico para contar del 1 al 5
+for (let i = 1; i <= 5; i++){
+    console.log(`Hola ${i}`)
+}
+
+// Recorrer un Array utilizando su propiedad de longitud (.length)
+const numbers = [1, 2, 3, 4, 5]
+for (let i = 0; i < numbers.length; i++){
+    console.log(`Elemento: ${numbers[i]}`)
+}
+```
+
+### 2. El Bucle `while`
+
+El bucle `while` repite un bloque de código mientras una condición específica sea verdadera (`true`). Es ideal cuando no sabemos con certeza cuántas iteraciones serán necesarias.
+
+```javascript
+// Bucle while básico
+let i = 0
+while (i <= 5){
+    console.log(`While ${i}`)
+    i++
+}
+
+/* Bucle infinito: ¡Cuidado! Ocurre si la condición nunca se vuelve falsa
+while(true) {
+    // Código que se ejecutaría sin detenerse
+}
+*/
+```
+
+### 3. El Bucle `do while`
+
+Es muy similar al `while`, con la gran diferencia de que el bloque de código **siempre se ejecuta al menos una vez**, ya que la condición se evalúa al final del ciclo.
+
+```javascript
+// Bucle do while
+i = 0
+do {
+    console.log(`hola ${i}`)
+    i++
+} while (i < 5)
+```
+
+### 4. El Bucle `for of`
+
+El bucle `for of` es una forma moderna y simplificada (similar a un *for-each*) para recorrer los valores de objetos iterables como **Arrays**, **Sets** y **Maps**, sin necesidad de controlar manualmente los índices o contadores.
+
+```javascript
+// Definición de las colecciones de datos
+let myArray = ["Te extraño", "te quiero", "vuelve", "realmente ", "te quiero"]
+let mySet = new Set(["Cristopher", "Alexander", "Breceda", "Lerma"])
+let myMap = new Map([
+    ["Name", "Cristopher"],
+    ["Edad", "18"],
+    ["Ciudad: ", "Mexico"]
+])
+
+// Recorrer un Array con for of
+for (let valor of myArray){
+    console.log(valor)
+}
+
+// Recorrer un Set con for of
+for (let valor of mySet){
+    console.log(valor)
+}
+
+// Recorrer un Map con for of (obtiene pares [clave, valor])
+for (let valor of myMap){
+    console.log(valor)
+}
+```
+
+### 5. Control de Bucles (`break` y `continue`)
+
+JavaScript nos permite alterar el flujo normal de cualquier bucle utilizando dos palabras clave:
+* **`continue`**: Salta la iteración actual y avanza directamente a la siguiente evaluación del bucle.
+* **`break`**: Rompe el bucle de inmediato, deteniendo por completo su ejecución.
+
+```javascript
+// Uso de break y continue dentro de un for
+for (let i = 1; i <= 5; i++){
+    if (i == 5){
+        continue // Salta el resto del código para el número 5
+    } else if (i == 7){
+        console.log(`Hola ${i}`)
+        break // Detiene el bucle por completo
+    }
+    console.log(`Hola ${i}`)
+}
+```
+
+### CODIGO
+
+- [Loops JavaScript](./Basic/14-Bucles.js)
