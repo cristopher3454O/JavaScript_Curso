@@ -1163,3 +1163,115 @@ console.log(typeof person4) // Muestra: "object"
 ### CODIGO
 
 - [Objects JavaScript](./Basic/18-Objetos.js)
+
+## 16 - Destructuring and Spread (Destructuración y Propagación) en JavaScript
+
+La **Destructuración** es una expresión de JavaScript que permite desempacar valores de arrays o propiedades de objetos en variables distintas de forma concisa. Por otro lado, el **Operador de Propagación (`...`)** (o Spread Operator) permite expandir elementos de un iterable (como un array u objeto) donde se esperan múltiples elementos o propiedades.
+
+### 1. Desestructuración de Arrays (Arreglos)
+
+Permite extraer elementos de un array basándose en su posición secuencial e índices numéricos.
+
+```javascript
+let myArray = [1, 2, 3, 4]
+
+// Sintaxis básica de extracción por posición
+let [myValue0, myValue1, myValue2, myValue3, myValue4] = myArray
+console.log(myValue0) // 1
+console.log(myValue4) // undefined (no existe en el array original)
+
+// Sintaxis con valores predeterminados (evita los valores undefined)
+let [myValue5 = 0, myValue6 = 0, myValue7 = 0, myValue8 = 0, myValue9 = 0] = myArray
+console.log(myValue9) // 0 (toma el valor por defecto)
+
+// Ignorar elementos dejando espacios vacíos entre comas
+let [myValue10, , , myValue13] = myArray
+console.log(myValue10) // 1
+console.log(myValue13) // 4
+```
+
+### 2. Desestructuración de Objetos
+
+Permite extraer propiedades de un objeto utilizando directamente el nombre de sus claves. El orden de las variables no importa.
+
+```javascript
+let persona = {
+    name: "cristopher",
+    age : 18,
+    alias : "chino"
+}
+
+// Sintaxis básica usando las mismas llaves de la propiedad
+let { name, age, alias } = persona
+console.log(name)  // "cristopher"
+console.log(alias) // "chino"
+
+// Sintaxis con valores predeterminados e intento de uso de claves incorrectas
+let { nombre2, edad2, alias2, email = "cristo@gmail.com" } = persona
+console.log(nombre2) // undefined (la propiedad "nombre2" no existe en el objeto original)
+console.log(email)   // "cristo@gmail.com" (toma el valor por defecto)
+
+// Sintaxis asignando nuevos nombres a las variables extraídas (claveOriginal: variableNueva)
+let { alias: alias3, name : name3, age: age3 } = persona
+console.log(name3)  // "cristopher"
+console.log(alias3) // "chino"
+```
+
+### 3. Destructuración en Objetos Anidados
+
+Para extraer propiedades de objetos que se encuentran dentro de otros objetos, se debe seguir la ruta de la estructura declarando la anidación durante el desempaque.
+
+```javascript
+let persona3 = {
+    name : "Cristopher",
+    age : 18,
+    alias : "Chino",
+    walk: function () { console.log("La persona camina") },
+    job : {
+        name: "Estudiante, próximamente Ing",
+        exp: 1,
+        work: function () { console.log(`la persona de ${this.age} años de experiencia trabaja.`) }
+    }
+}
+
+// Extracción de propiedad interna del objeto anidado 'job'
+let { name: name4, job: { name : jobName } } = persona3
+console.log(name4)   // "Cristopher"
+console.log(jobName) // "Estudiante, próximamente Ing"
+```
+
+### 4. Operador de Propagación (Spread Operator) en Arrays
+
+El operador de propagación (`...`) permite desempaquetar, duplicar y combinar elementos de arreglos de manera rápida sin modificar los valores originales.
+
+```javascript
+// Agregar elementos expandiendo el array original
+let myArray2 = [...myArray, 5, 6]
+console.log(myArray2) // [1, 2, 3, 4, 5, 6]
+
+// Crear una copia exacta independiente en memoria
+let myArray3 = [...myArray]
+console.log(myArray3) // [1, 2, 3, 4]
+
+// Combinación o concatenación de múltiples arrays en uno nuevo
+let myArray4 = [...myArray, ...myArray2, ...myArray3]
+console.log(myArray4)
+```
+
+### 5. Operador de Propagación en Objetos
+
+De la misma manera que con los arrays, permite clonar las propiedades de un objeto y añadir o actualizar claves en una sola línea.
+
+```javascript
+// Agregar propiedades o modificar un objeto en una copia nueva
+let persona4 = { ...persona, email: "cris@gmail.com" }
+console.log(persona4)
+
+// Crear una copia idéntica del objeto
+let persona5 = { ...persona }
+console.log(persona5)
+```
+
+### CODIGO
+
+- [Destructuración y Propagación](./Basic/20-Desestructuración-y-propagación.js)
