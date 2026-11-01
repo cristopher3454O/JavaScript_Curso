@@ -1611,3 +1611,126 @@ try {
 ### CODIGO
 
 - [Exceptions JavaScript](./Basic/24-Expeciones.js)
+
+
+## 19 - Console Methods (Métodos de la Consola) en JavaScript
+
+El objeto **`console`** en JavaScript proporciona acceso a la consola de depuración del navegador o del entorno de ejecución (como Node.js). Aunque el método más popular es `console.log()`, existen múltiples funciones integradas que nos permiten dar formato a los mensajes, agrupar información, medir tiempos de ejecución y rastrear el flujo de nuestro código de manera profesional.
+
+### 1. Mensajes Informativos y de Estado
+
+Permiten enviar mensajes a la consola clasificados por su nivel de importancia o severidad, facilitando el filtrado en las herramientas de desarrollo.
+
+* **`console.log()`**: Imprime un mensaje general de depuración.
+* **`console.error()`**: Muestra un mensaje de error crítico, usualmente resaltado en color rojo.
+* **`console.warn()`**: Emite un mensaje de advertencia o precaución, usualmente en color amarillo.
+* **`console.info()`**: Muestra información adicional o de carácter informativo técnico.
+
+```javascript
+// log
+console.log("Hola Java Script")
+
+// Error
+console.error("Esto es un mensaje de Error")
+console.error("Error al intentar quererla ")
+
+// Warn
+console.warn("Este es un mensaje de advertncia")
+
+// info
+console.info("Este es un mensaje de informacion adicional")
+```
+
+### 2. Visualización Estructurada (`table` y `group`)
+
+* **`console.table()`**: Transforma colecciones de datos complejas (como matrices bidimensionales o arrays de objetos) en una tabla interactiva muy fácil de leer.
+* **`console.group()` y `console.groupEnd()`**: Agrupa un conjunto de logs bajo un bloque desplegable, organizando la salida de la consola por categorías.
+
+```javascript
+// Table con una matriz bidimensional (Array de Arrays)
+let data = [
+    ["Cris", 18 ],
+    ["Fernanda", 21]
+]
+console.table(data)
+
+// Table con un Array de Objetos (crea columnas por propiedad)
+data = [
+    {name : "Cris", age: 18 },
+    {name : "Fernanda", age: 21}
+]
+console.table(data)
+
+// group: Agrupación jerárquica de logs relacionados
+console.group("Usuarios")
+console.log("Nombre : Cristopher")
+console.log("Edad: 37")
+console.groupEnd() // Cierra el grupo actual
+```
+
+### 3. Temporizadores de Rendimiento (`time` y `timeEnd`)
+
+Permiten medir con precisión cuántos milisegundos tarda en ejecutarse un bloque de código. Se inicia con `console.time("etiqueta")` y se finaliza con `console.timeEnd("etiqueta")` usando exactamente el mismo identificador. Se pueden solapar múltiples contadores en paralelo.
+
+```javascript
+// time: Iniciando el temporizador 2
+console.time("Tiempo de ejecucion 2")
+
+for (let i = 0; i < 1000; i++){}
+
+// Iniciando el temporizador 1 mientras el 2 sigue corriendo
+console.time("Tiempo de ejecución 1")
+
+for (let i = 0; i < 10000; i++) {}
+
+// Finaliza y muestra la duración total del temporizador 2
+console.timeEnd("Tiempo de ejecución 2")
+
+for (let i = 0; i < 10000; i++) {}
+
+// Finaliza y muestra la duración total del temporizador 1
+console.timeEnd("Tiempo de ejecución 1")
+```
+
+### 4. Diagnóstico, Contadores y Rastreo (`assert`, `count` y `trace`)
+
+* **`console.assert()`**: Escribe un mensaje de error en la consola **únicamente si la condición evaluada es falsa (`false`)**. Si es verdadera, no hace nada.
+* **`console.count()`**: Muestra la cantidad de veces que se ha invocado esa línea con una etiqueta específica. Se puede reiniciar a cero con `console.countReset()`.
+* **`console.trace()`**: Muestra la pila de llamadas (*stack trace*) que se ejecutaron hasta llegar a ese punto exacto, indicando qué función llamó a cuál.
+
+```javascript
+// assert: Solo enviará error si eres menor de 18 años
+let age = 17
+console.assert(age >= 18, "El usario debe ser mayor a 18 años")
+
+// count: Registro y conteo de incidencias
+console.count("click") // click: 1
+console.count("click") // click: 2
+console.count("click") // click: 3
+console.countReset("click") // Reinicia el contador de "click"
+console.count("click") // click: 1
+
+// trace: Seguimiento de la pila de ejecución de funciones
+function funcA(){
+    funcB()
+}
+
+function funcB(){
+    console.trace("Seguimiento de la ejecución") // Muestra que fue llamada por funcA()
+}
+
+funcA()
+```
+
+### 5. Limpieza de Consola
+
+* **`console.clear()`**: Borra por completo todo el historial acumulado en la pantalla de la consola de depuración.
+
+```javascript
+// Limpiar la pantalla de la consola
+// console.clear()
+```
+
+### CODIGO
+
+- [Console Methods JavaScript](./Basic/26-Console-methods.js)
