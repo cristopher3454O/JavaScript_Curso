@@ -114,6 +114,22 @@ Bienvenido a mi repositorio de apuntes de JavaScript. Esta guía recopila los fu
     - [4. Capturar Múltiples Tipos de Errores (instanceof)](#4-capturar-múltiples-tipos-de-errores-instanceof)
     - [5. Creación de Excepciones Personalizadas](#5-creación-de-excepciones-personalizadas)
 
+- [Herramientas de Desarrollo y Modularidad](#herramientas-de-desarrollo-y-modularidad)
+  - [19 - Console Methods (Métodos de la Consola) en JavaScript](#19---console-methods-métodos-de-la-consola-en-javascript)
+    - [1. Mensajes Informativos y de Estado](#1-mensajes-informativos-y-de-estado)
+    - [2. Visualización Estructurada (table y group)](#2-visualización-estructurada-table-y-group)
+    - [3. Temporizadores de Rendimiento (time y timeEnd)](#3-temporizadores-de-rendimiento-time-y-timeend)
+    - [4. Diagnóstico, Contadores y Rastreo (assert, count y trace)](#4-diagnóstico-contadores-y-rastreo-assert-count-y-trace)
+    - [5. Limpieza de Consola](#5-limpieza-de-consola)
+  - [20 - Modules (Módulos) en JavaScript](#20---modules-módulos-en-javascript)
+    - [1. Exportaciones Nombradas (export)](#1-exportaciones-nombradas-export)
+    - [2. Exportación de Clases](#2-exportación-de-clases)
+    - [3. Exportación por Defecto (export default)](#3-exportación-por-defecto-export-default)
+  - [21 - Import Modules (Importación de Módulos) en JavaScript](#21---import-modules-importación-de-módulos-en-javascript)
+    - [1. Importación Nombrada (Desestructurada)](#1-importación-nombrada-desestructurada)
+    - [2. Consumo de Clases Importadas](#2-consumo-de-clases-importadas)
+    - [3. Importación por Defecto](#3-importación-por-defecto)
+
 </details>
 
 
