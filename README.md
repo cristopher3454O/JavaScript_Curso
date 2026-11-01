@@ -1734,3 +1734,117 @@ funcA()
 ### CODIGO
 
 - [Console Methods JavaScript](./Basic/26-Console-methods.js)
+
+## 20 - Modules (Módulos) en JavaScript
+
+Los **Módulos** son fragmentos de código contenidos en archivos independientes que nos permiten separar y organizar nuestra aplicación en componentes reutilizables. Al exportar funciones, variables o clases desde un archivo, podemos importarlas en otros archivos, evitando tener un único script masivo y mejorando el mantenimiento del software.
+
+### 1. Exportaciones Nombradas (`export`)
+
+Permiten exportar múltiples elementos desde un mismo archivo anteponiendo la palabra clave `export` antes de su declaración. Al ser importadas en otro script, se debe utilizar obligatoriamente el mismo nombre original encerrado entre llaves `{}`.
+
+```javascript
+// Exportación de Funciones
+export function add(a, b){
+    return a + b
+}
+console.log(add(5, 0))
+
+// Exportación de Propiedades (Constantes y Variables)
+export const PI = 3.1416
+export let name = "Cristopher"
+```
+
+### 2. Exportación de Clases
+
+Al igual que las funciones y variables primitivas, las plantillas orientadas a objetos se pueden exportar de forma nombrada para encapsular e instanciar lógica en cualquier otra parte del proyecto.
+
+```javascript
+// Exportación de Clases
+export class Circle{
+    constructor(radius){
+        this.radius = radius
+    }
+    // Métodos para calcular propiedades del círculo
+    area(){
+        return Math.PI * Math.pow(this.radius, 2)
+    }
+    perimetro(){
+        return 2 * Math.PI * this.radius
+    }
+}
+```
+
+### 3. Exportación por Defecto (`export default`)
+
+Cada módulo o archivo de JavaScript puede tener **únicamente una sola exportación por defecto**. Es ideal para indicar cuál es la funcionalidad principal del archivo. La gran ventaja es que, al importarlo en otro script, no requiere usar llaves `{}` e incluso se le puede asignar cualquier nombre personalizado durante la importación.
+
+```javascript
+// Exportación por defecto de una función
+export default function substract(a, b){
+    return a - b
+}
+
+// Ejemplo alternativo: Exportación por defecto de una clase
+// export default class myClass {
+//     func(){
+//         console.log("Mi clase ")
+//     }
+// }
+```
+
+### CODIGO
+
+- [Modules JavaScript](./Basic/28-Export-modules.js)
+
+
+## 21 - Import Modules (Importación de Módulos) en JavaScript
+
+Para utilizar las funciones, variables o clases que han sido exportadas desde otros archivos independientes, empleamos la palabra clave **`import`**. Esta sintaxis nos permite enlazar componentes externos y mantener un flujo de trabajo modular, consumiendo únicamente los recursos que nuestro script actual necesita.
+
+### 1. Importación Nombrada (Desestructurada)
+
+Para importar elementos que fueron declarados con un `export` nombrado, debemos envolver sus nombres exactos entre llaves `{}`. El orden dentro de las llaves no afecta la importación, pero los nombres deben coincidir de forma estricta con el archivo de origen.
+
+```javascript
+// Importación de múltiples elementos nombrados desde un archivo relativo
+import { add, PI, name, Circle } from "./28-Export-modules.js";
+
+// Uso de funciones importadas
+console.log(add(5, 10))
+
+// Uso de constantes y variables importadas
+console.log(PI)
+console.log(name)
+```
+
+### 2. Consumo de Clases Importadas
+
+Una vez importada de manera nombrada, una clase externa se comporta exactamente igual que una clase local. Podemos instanciar objetos a partir de ella utilizando el operador `new` y acceder a la ejecución de todos sus métodos.
+
+```javascript
+// Instanciación de la clase externa 'Circle'
+let circle = new Circle(10)
+
+// Ejecución de métodos y formateo de resultados numéricos
+console.log(circle.area().toFixed(2))      // Ajusta el resultado a 2 decimales
+console.log(circle.perimetro().toFixed())  // Redondea al entero más cercano
+```
+
+### 3. Importación por Defecto
+
+Cuando un archivo exporta un elemento mediante `export default`, este se importa **fuera de las llaves `{}`**. Dado que es la exportación principal del archivo, JavaScript nos permite asignarle cualquier alias o nombre personalizado directamente en la declaración del `import`.
+
+```javascript
+// Importación del elemento por defecto (se le asigna el nombre 'defaultImport')
+import defaultImport from "./28-Export-modules.js"
+
+// Uso de la función por defecto (realiza la resta)
+console.log(defaultImport(5, 10))
+```
+
+### CODIGO
+
+- [Import Modules JavaScript](./Basic/29-Import-modules.js)
+
+
