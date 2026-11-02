@@ -1861,6 +1861,11 @@ console.log(defaultImport(5, 10))
 
 ### CODIGO
 
+#### Algunos Ejercicios !
+
 - [Import Modules JavaScript](./Basic/29-Import-modules.js)
+- [Export Modules JavaScript](./Basic/28-Export-modules.js)
+
+- [Ejercicio Paquete de Exportación](./Basic/ExportacionEjercicios/)
 
 
