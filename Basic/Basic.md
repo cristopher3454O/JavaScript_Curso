@@ -142,7 +142,7 @@ console.log("¡Hola, mundo!");
 ```
 
 #### CODIGO
-- [HolaMundo.js](./Basic/00-HelloWord.js)
+- [HolaMundo.js](00-HelloWord.js)
 
 ## 01 - Variables en JavaScript
 
@@ -181,7 +181,7 @@ console.log(URL_BASE);
 // URL_BASE = "[https://otra-url.com](https://otra-url.com)";
 ```
 #### CODIGO
-- [01-Variables.js](./Basic/01-Variables.js)
+- [01-Variables.js](01-Variables.js)
 
 
 
@@ -255,7 +255,7 @@ console.log(typeof edad);   // Imprimirá: number
 ```
 
 #### CODIGO
-- [02-DataType.js](./Basic/02-DataTypes.js)
+- [02-DataType.js](02-DataTypes.js)
 
 ## 03 - Operadores en JavaScript
 
@@ -394,7 +394,7 @@ isRaining
 ```
 
 #### CODIGO
-- [Operadores](./Basic/04-Operadores.js)
+- [Operadores](04-Operadores.js)
 
 ## 06 - Strings (Cadenas de Texto) en JavaScript
 
@@ -462,7 +462,7 @@ console.log(`Cristopher ${message}`);
 ```
 
 #### CODIGO
-- [Strings (Cadenas de Texto)](./Basic/06-String.js)
+- [Strings (Cadenas de Texto)](06-String.js)
 
 
 ## 08 - Estructuras Condicionales en JavaScript
@@ -564,7 +564,7 @@ console.log(dayName); // Martes
 ```
 
 #### CODIGO
-- [Condicionales](./Basic/08-Condicionales.js)
+- [Condicionales](08-Condicionales.js)
 
 # Estructuras de Datos
 
@@ -664,7 +664,7 @@ console.log(myArray);
 ```
 
 #### CODIGO
-- [Array JavaScript](./Basic/10-Arrays.js)
+- [Array JavaScript](10-Arrays.js)
 
 ## 11 - Sets (Conjuntos) en JavaScript
 
@@ -752,7 +752,7 @@ console.log(mySet); // Solo aparecerá una vez "Alexander"
 
 ### CODIGO
 
-- [Sets](./Basic/11-Sets.js)
+- [Sets](11-Sets.js)
 
 ## 12 - Maps (Mapas) en JavaScript
 
@@ -839,7 +839,7 @@ myMap.clear();
 console.log(myMap); // Muestra: Map(0) {}
 ```
 ### CODIGO
-- [Maps](./Basic/12-Maps.js)
+- [Maps](12-Maps.js)
 
 ## 13 - Loops (Bucles) en JavaScript
 
@@ -945,7 +945,7 @@ for (let i = 1; i <= 5; i++){
 
 ### CODIGO
 
-- [Loops JavaScript](./Basic/14-Bucles.js)
+- [Loops JavaScript](14-Bucles.js)
 
 
 ## 14 - Functions (Funciones) en JavaScript
@@ -1091,7 +1091,7 @@ myMap.forEach((value) => console.log(value))
 
 ### CODIGO
 
-- [Functions JavaScript](./Basic/16-Funciones.js)
+- [Functions JavaScript](16-Funciones.js)
 
 
 ## 15 - Objects (Objetos) en JavaScript
@@ -1220,7 +1220,7 @@ console.log(typeof person4) // Muestra: "object"
 
 ### CODIGO
 
-- [Objects JavaScript](./Basic/18-Objetos.js)
+- [Objects JavaScript](18-Objetos.js)
 
 ## 16 - Destructuring and Spread (Destructuración y Propagación) en JavaScript
 
@@ -1332,7 +1332,7 @@ console.log(persona5)
 
 ### CODIGO
 
-- [Destructuración y Propagación](./Basic/20-Desestructuración-y-propagación.js)
+- [Destructuración y Propagación](20-Desestructuración-y-propagación.js)
 
 
 ## 17 - Classes (Clases) en JavaScript
@@ -1502,7 +1502,7 @@ myDog.love()
 
 ### CODIGO
 
-- [Clases JavaScript](./Basic/22-Clases.js)
+- [Clases JavaScript](22-Clases.js)
 
 
 ## 18 - Errors and Exceptions (Errores y Excepciones) en JavaScript
@@ -1626,7 +1626,7 @@ try {
 
 ### CODIGO
 
-- [Exceptions JavaScript](./Basic/24-Expeciones.js)
+- [Exceptions JavaScript](24-Expeciones.js)
 
 
 ## 19 - Console Methods (Métodos de la Consola) en JavaScript
@@ -1749,7 +1749,7 @@ funcA()
 
 ### CODIGO
 
-- [Console Methods JavaScript](./Basic/26-Console-methods.js)
+- [Console Methods JavaScript](26-Console-methods.js)
 
 ## 20 - Modules (Módulos) en JavaScript
 
@@ -1811,7 +1811,7 @@ export default function substract(a, b){
 
 ### CODIGO
 
-- [Modules JavaScript](./Basic/28-Export-modules.js)
+- [Modules JavaScript](28-Export-modules.js)
 
 
 ## 21 - Import Modules (Importación de Módulos) en JavaScript
@@ -1863,9 +1863,9 @@ console.log(defaultImport(5, 10))
 
 #### Algunos Ejercicios !
 
-- [Import Modules JavaScript](./Basic/29-Import-modules.js)
-- [Export Modules JavaScript](./Basic/28-Export-modules.js)
+- [Import Modules JavaScript](29-Import-modules.js)
+- [Export Modules JavaScript](28-Export-modules.js)
 
-- [Ejercicio Paquete de Exportación](./Basic/ExportacionEjercicios/)
+- [Ejercicio Paquete de Exportación](ExportacionEjercicios/)
 
 
