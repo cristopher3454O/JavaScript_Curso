@@ -111,13 +111,78 @@ console.log(`Resultado :  ${sumManyTimes(2, ...numeros)} `)
 
 
 
+console.log()
+// 6. Crea un Callback que se invoque con 
+// el resultado de la suma de todos los 
+// números que se le pasan a una función
+console.log("6. Crea un Callback que se invoque con el resultado de la suma de todos los números que se le pasan a una función")
 
-// 6. Crea un Callback que se invoque con el resultado de la suma de todos los números que se le pasan a una función
+function sumaTodosNumeros(numeros, Callback){
+    let suma = 0
+    for (let numero of numeros){
+        suma+=numero
+    }
+    Callback(suma)
+
+}
+sumaTodosNumeros([1,2,3,4,5,6], function(resultado){
+    console.log("La suma a todo es: ", resultado)
+})
+
+console.log()
 
 // 7. Desarrolla una función parcial
+console.log("7. Desarrolla una función parcial")
+
+function myFunctionParcial(a){
+    return function (b,c){
+        return nombres(a,b,c)
+    }
+}
+function nombres(a,b,c){
+    return `Holaaaa a ${a} ${b} ${c}`
+}
+let nombre = myFunctionParcial("Cristopher")
+console.log(nombre(""))
+console.log(nombre("Fernada", "Somos los cuchurriminos"))
+
+
+console.log()
 
 // 8. Implementa un ejemplo que haga uso de Spread
+console.log("8. Implementa un ejemplo que haga uso de Spread")
+
+const palabrasQueNuncaLeDije = ["Te amo ", "te etaño ", "Espero en otra ", "vida", "Volverte", "a ver"]
+function recorridoPalabras(palabra1, palabra2, palabra3){
+    return palabra1 + palabra2 + palabra3
+}
+console.log(recorridoPalabras("hola", "como", "estas?"))
+console.log(recorridoPalabras(...palabrasQueNuncaLeDije))
 
 // 9. Implementa un retorno implícito
+console.log()
+console.log("9. Implementa un retorno implícito")
+
+const saludo2 = (saludo, nombre) => `${saludo} ${nombre}`
+console.log(saludo2("Holiii", "Fernanda"))
+
+
+console.log()
 
 // 10. Haz uso del this léxico
+console.log("10. Haz uso del this léxico")
+
+const tiposDeSaludos = {
+    name : "Fernanda",
+    saludo1 : function(){
+        console.log(`Hola como estas? ${this.name}`)
+    },
+    arrowSaludo1 : function (){
+        const despedida = () => {
+            console.log(`Adios ${this.name}`);
+        };
+        despedida()
+    }
+}
+tiposDeSaludos.saludo1()
+tiposDeSaludos.arrowSaludo1()
