@@ -62,18 +62,114 @@ console.log(carasACorazones)
 // 4. Ordena un array de números de mayor a menor
 
 let myArray2 = [6,2,3,4,3,1,7,8,9,10]
-let arrayMayorAMenor = myArray2.reversemyArray2.sort((a,b) => b -a)
+let arrayMayorAMenor = myArray2.sort((a, b) => b - a);
 console.log(arrayMayorAMenor)
 
 
 // 5. Dados dos sets, encuentra la unión, intersección y diferencia de ellos
 
+
+const primerSet = new Set (["cristopher", "te amo", "regresa"])
+const segundoSet = new Set (["Fernanda", "te amo", "regresa"])
+
+const union = new Set([...primerSet,...segundoSet])
+console.log(union)
+
+const interseccion = new Set([...primerSet].filter(element => segundoSet.has(element)))
+console.log(interseccion)
+
+const diferencia = new Set([...primerSet].filter(element => !segundoSet.has(element)))
+console.log(diferencia)
+
+const unionCompletaSet = new Set([...union,...interseccion,...diferencia])
+console.log(unionCompletaSet)
 // 6. Itera los resultados del ejercicio anterior
 
-// 7. Crea un mapa que almacene información se usuarios (nombre, edad y email) e itera los datos
+unionCompletaSet.forEach(element => console.log(element))
 
+// 7. Crea un mapa que almacene información
+//  se usuarios (nombre, edad y email) e itera los datos
+
+let listaUsuarios = [
+    new Map([
+    ["Nombre", "Cristopher"],
+    ["Edad",19],
+    ["Email","cris654@gmail.com"]      
+]),
+    new Map([
+    ["Nombre", "chikis"],
+    ["Edad",21],
+    ["Email","chkis654@gmail.com"]      
+]),
+    new Map([
+    ["Nombre", "Feranda"],
+    ["Edad",21],
+    ["Email","pollito654@gmail.com"]      
+]),
+    new Map([
+    ["Nombre", "Camilo"],
+    ["Edad",1],
+    ["Email","ckihkis654@gmail.com"]      
+]),
+];
+
+listaUsuarios.forEach((usuarioMap, index) =>{
+console.log(`--- Usuario ${index + 1} ---`);
+    usuarioMap.forEach((value, key ) =>{
+        console.log(`${key}: ${value}`);
+    });
+});
 // 8. Dado el mapa anterior, crea un array con los nombres
 
-// 9. Dado el mapa anterior, obtén un array con los email de los usuarios mayores de edad y transfórmalo a un set
+let myArrayNombres =[]
 
-// 10. Transforma el mapa en un objeto, a continuación, transforma el objeto en un mapa con clave el email de cada usuario y como valor todos los datos del usuario
+listaUsuarios.forEach((usuarioMap) =>{
+    if (usuarioMap.has("Nombre")){
+        myArrayNombres.push(usuarioMap.get("Nombre"))
+    }
+});
+console.log()
+console.log("Muestra solos los nombres")
+myArrayNombres.forEach(element => console.log(element))
+
+// 9. Dado el mapa anterior, 
+// obtén un array con los email
+//  de los usuarios mayores de edad 
+// y transfórmalo a un set
+console.log("Muesta solo correos mayores")
+let myArrayCorreos = []
+listaUsuarios.forEach((UsuariosMap) => {
+    if(UsuariosMap.has("Edad")){
+        temporal = UsuariosMap.get("Edad")
+        if(temporal >= 18 ){
+            if(UsuariosMap.has("Email")){
+                myArrayCorreos.push(UsuariosMap.get("Email"))
+            } else {
+                console.log("No hay nada we")
+            }
+        } else {
+            return
+        }
+    }
+}) ;
+
+let convertidoASet = new Set(myArrayCorreos)
+convertidoASet.forEach(element => console.log(element))
+
+// 10. Transforma el mapa en un objeto,
+//  a continuación, transforma el objeto en
+//  un mapa con clave el email de cada usuario 
+// y como valor todos los datos del usuario
+
+let listaObjetos = listaUsuarios.map(usuarioMap => Object.fromEntries(usuarioMap));
+console.log("Lista de objetos:", listaObjetos);
+
+let mapaPorEmail = new Map(
+    listaObjetos.map(objeto => [objeto.Email, objeto])
+);
+
+console.log("Nuevo Map organizado por email:");
+console.log(mapaPorEmail);
+
+console.log("\nBuscando a Feranda por su correo:");
+console.log(mapaPorEmail.get("pollito654@gmail.com"));
