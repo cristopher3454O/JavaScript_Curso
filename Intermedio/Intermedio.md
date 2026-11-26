@@ -5,6 +5,8 @@ Bienvenido a este repositorio de práctica y documentación del **Curso Intermed
 <details open>
 <summary><b>Índice General (Tabla de Contenido)</b></summary>
 
+<!--Funciones Avanzadas-->
+
 - [01 - Advanced Functions (Funciones Avanzadas) en JavaScript](#01---advanced-functions-funciones-avanzadas-en-javascript)
   - [1. Ciudadanos de Primera Clase (*First-Class Citizens*)](#1-ciudadanos-de-primera-clase-first-class-citizens)
   - [2. Arrow Functions Avanzadas (Retorno Implícito y `this` Léxico)](#2-arrow-functions-avanzadas-retorno-implícito-y-this-léxico)
@@ -14,6 +16,16 @@ Bienvenido a este repositorio de práctica y documentación del **Curso Intermed
   - [6. Recursividad](#6-recursividad)
   - [7. Funciones Parciales y Currying](#7-funciones-parciales-y-currying)
   - [8. Callbacks](#8-callbacks)
+
+<!--Estructuras Avanzadas-->
+- [02 - Advanced Structures (Estructuras Avanzadas) en JavaScript](#02---advanced-structures-estructuras-avanzadas-en-javascript)
+  - [1. Arrays Avanzados: Métodos Funcionales (`forEach`, `map` y `filter`)](#1-arrays-avanzados-métodos-funcionales-foreach-map-y-filter)
+  - [2. Arrays Avanzados: Manipulación (`flat` y `flatMap`)](#2-arrays-avanzados-manipulación-flat-y-flatmap)
+  - [3. Arrays Avanzados: Ordenación (`sort` y `reverse`)](#3-arrays-avanzados-ordenación-sort-y-reverse)
+  - [4. Arrays Avanzados: Búsqueda (`includes`, `find` y `findIndex`)](#4-arrays-avanzados-búsqueda-includes-find-y-findindex)
+  - [5. Sets Avanzados: Operaciones de Conjuntos y Conversión](#5-sets-avanzados-operaciones-de-conjuntos-y-conversión)
+  - [6. Maps Avanzados: Iteración y Conversión](#6-maps-avanzados-iteración-y-conversión)
+
 
 </details>
 
@@ -180,3 +192,113 @@ processData(, (result) => console.log(`En línea: ${result}`))
 ### CODIGO
 
 - [Advanced Functions JavaScript](00-advanced-functions.js)
+
+
+## 02 - Advanced Structures (Estructuras Avanzadas) en JavaScript
+
+JavaScript ofrece métodos avanzados para transformar, filtrar y consultar **Arrays**, así como operaciones de conjuntos y conversiones entre **Sets**, **Maps** y **Objetos** para manipular colecciones de datos de forma declarativa y eficiente.
+
+### 1. Arrays Avanzados: Métodos Funcionales (`forEach`, `map` y `filter`)
+
+Permiten iterar y transformar colecciones sin modificar el arreglo original:
+
+* **`forEach()`**: Ejecuta una función por cada elemento del array (no retorna un nuevo array).
+* **`map()`**: Transforma cada elemento y devuelve un nuevo array con los resultados.
+* **`filter()`**: Filtra y devuelve un nuevo array únicamente con los elementos que cumplen una condición.
+
+```javascript
+let numbers = [1, 2, 3, 4, 5, 6]
+
+numbers.forEach(el => console.log(el))            // Imprime cada número
+let doubled = numbers.map(el => el * 2)           // [2, 4, 6, 8, 10, 12]
+let evens = numbers.filter(el => el % 2 === 0)    // [2, 4, 6]
+```
+
+### 2. Arrays Avanzados: Manipulación (`flat` y `flatMap`)
+
+* **`flat(profundidad)`**: Aplana sub-arrays anidados hasta el nivel de profundidad indicado.
+* **`flatMap()`**: Aplica una función de mapeo a cada elemento y aplana el resultado un nivel automáticamente.
+
+```javascript
+// flat: aplana niveles de anidación
+let nestedArray = [1, [2, [3, [4]]]]
+console.log(nestedArray.flat(3)) // [1, 2, 3, 4]
+
+// flatMap: mapea y aplana en un solo paso
+let phrases = ["Hola mundo", "Adiós JS"]
+let words = phrases.flatMap(phrase => phrase.split(" "))
+console.log(words) // ["Hola", "mundo", "Adiós", "JS"]
+```
+
+### 3. Arrays Avanzados: Ordenación (`sort` y `reverse`)
+
+* **`sort()`**: Ordena los elementos alfabéticamente por defecto. Para números, requiere una función comparadora `(a, b) => a - b`.
+* **`reverse()`**: Invierte el orden actual de los elementos del array.
+
+```javascript
+// Ordenación numérica ascendente
+let unsorted = [3, 4, 1, 6, 10]
+let sorted = unsorted.sort((a, b) => a - b) // [1, 3, 4, 6, 10]
+
+// Invertir el orden
+sorted.reverse() // [10, 6, 4, 3, 1]
+```
+
+### 4. Arrays Avanzados: Búsqueda (`includes`, `find` y `findIndex`)
+
+* **`includes()`**: Comprueba si un valor existe en el array (`true` o `false`).
+* **`find()`**: Devuelve el **primer elemento** que cumple con la condición dada.
+* **`findIndex()`**: Devuelve el **índice** del primer elemento que cumple con la condición.
+
+```javascript
+const nums = [10, 6, 4, 3, 1]
+
+console.log(nums.includes(4))                       // true
+console.log(nums.find(el => el % 2 === 0))          // 10 (primer par)
+console.log(nums.findIndex(el => el % 2 === 1))     // 3 (índice del primer impar)
+```
+
+### 5. Sets Avanzados: Operaciones de Conjuntos y Conversión
+
+Combinando `Set` con el operador *Spread* (`...`) y `filter()`, se pueden eliminar duplicados y realizar operaciones matemáticas de conjuntos:
+
+```javascript
+// Eliminar duplicados de un array
+let cleanArray = [...new Set([1, 2, 2, 3, 3])] // [1, 2, 3]
+
+const setA = new Set([1, 2, 3])
+const setB = new Set([2, 3, 4, 5])
+
+// Operaciones de conjuntos
+const union = new Set([...setA, ...setB])                                     // Set {1, 2, 3, 4, 5}
+const intersection = new Set([...setA].filter(el => setB.has(el)))            // Set {2, 3}
+const difference = new Set([...setA].filter(el => !setB.has(el)))             // Set {1}
+
+// Conversión e iteración
+const arrayFromSet = [...setA] // [1, 2, 3]
+setA.forEach(el => console.log(el))
+```
+
+### 6. Maps Avanzados: Iteración y Conversión
+
+Los objetos `Map` pueden recorrerse directamente con `forEach` y convertirse fácilmente en **Arrays** u **Objetos literales** (y viceversa):
+
+```javascript
+let myMap = new Map([
+    ["name", "Cristopher"],
+    ["age", 19]
+])
+
+// Iteración (recibe primero el valor y luego la clave)
+myMap.forEach((value, key) => console.log(`${key}: ${value}`))
+
+// Conversiones
+const arrayFromMap = Array.from(myMap)               // [["name", "Cristopher"], ["age", 19]]
+const objectFromMap = Object.fromEntries(myMap)      // { name: "Cristopher", age: 19 }
+const mapFromObject = new Map(Object.entries(objectFromMap)) // Map { "name" => "Cristopher", ... }
+```
+
+### CODIGO
+
+- [Advanced Structures JavaScript](02-advanced-structures.js)
+
