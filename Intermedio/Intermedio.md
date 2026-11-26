@@ -198,7 +198,8 @@ processData(, (result) => console.log(`En línea: ${result}`))
 
 ### CODIGO
 
-- [Advanced Functions JavaScript](00-advanced-functions.js)
+- [Advanced Functions JavaScript](04-Objectos-Avanzados.js)
+- [Ejercicios Funciones Avanzadas](01-Ejercicios-Funciones-Avanzadas.js)
 
 
 ## 02 - Advanced Structures (Estructuras Avanzadas) en JavaScript
@@ -307,7 +308,8 @@ const mapFromObject = new Map(Object.entries(objectFromMap)) // Map { "name" => 
 
 ### CODIGO
 
-- [Advanced Structures JavaScript](02-advanced-structures.js)
+- [Advanced Structures JavaScript](02-Estructuras-Avanzadas.js)
+- [Ejercicios Estructuras Avanzadas](03-Ejericicios-Estructuras-Avanzadas.js)
 
 
 ## 03 - Advanced Objects and Classes (Objetos Avanzados y Prototipos) en JavaScript
@@ -394,4 +396,4 @@ console.log(Object.entries(fullPerson)) // [["name", "Brais"], ["age", 19], ["al
 
 ### CODIGO
 
-- [Advanced Objects and Prototypes JavaScript](04-advanced-objects.js)
+- [Advanced Objects and Prototypes JavaScript](/Intermedio/04-Objectos-Avanzados.js)
