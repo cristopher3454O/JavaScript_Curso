@@ -26,6 +26,13 @@ Bienvenido a este repositorio de práctica y documentación del **Curso Intermed
   - [5. Sets Avanzados: Operaciones de Conjuntos y Conversión](#5-sets-avanzados-operaciones-de-conjuntos-y-conversión)
   - [6. Maps Avanzados: Iteración y Conversión](#6-maps-avanzados-iteración-y-conversión)
 
+<!--Objectos Avanzado-->
+- [03 - Advanced Objects and Classes (Objetos Avanzados y Prototipos) en JavaScript](#03---advanced-objects-and-classes-objetos-avanzados-y-prototipos-en-javascript)
+  - [1. Prototipos (`Object.getPrototypeOf`)](#1-prototipos-objectgetprototypeof)
+  - [2. Herencia Prototípica (`Object.create`)](#2-herencia-prototípica-objectcreate)
+  - [3. Funciones Constructoras y Métodos en el Prototipo](#3-funciones-constructoras-y-métodos-en-el-prototipo)
+  - [4. Métodos Avanzados de Objetos (`assign`, `keys`, `values` y `entries`)](#4-métodos-avanzados-de-objetos-assign-keys-values-y-entries)
+
 
 </details>
 
@@ -302,3 +309,89 @@ const mapFromObject = new Map(Object.entries(objectFromMap)) // Map { "name" => 
 
 - [Advanced Structures JavaScript](02-advanced-structures.js)
 
+
+## 03 - Advanced Objects and Classes (Objetos Avanzados y Prototipos) en JavaScript
+
+A diferencia de otros lenguajes basados en clases tradicionales, JavaScript utiliza un modelo de **herencia prototípica**. Cada objeto posee un enlace interno hacia otro objeto llamado **prototipo**, del cual hereda propiedades y métodos, además de contar con métodos estáticos en `Object` para fusionar e inspeccionar sus datos.
+
+### 1. Prototipos (`Object.getPrototypeOf`)
+
+Todo objeto en JavaScript tiene un prototipo base al que se puede acceder mediante `Object.getPrototypeOf()`. Además, los objetos son dinámicos y permiten agregar nuevos métodos o propiedades en tiempo de ejecución.
+
+```javascript
+let person = {
+    name: "Cristopher",
+    age: 19,
+    greet(){
+        console.log(`Hola, soy ${this.name}`)
+    }
+}
+
+// Obtener el prototipo del objeto
+console.log(Object.getPrototypeOf(person))
+
+// Agregar un método dinámicamente al objeto
+person.sayAge = function(){
+    console.log(`Tengo ${this.age} años`)
+}
+person.sayAge() // "Tengo 19 años"
+```
+
+### 2. Herencia Prototípica (`Object.create`)
+
+El método **`Object.create(prototipo)`** crea un nuevo objeto utilizando un objeto existente como su prototipo. El nuevo objeto hereda todas las propiedades y métodos del padre, pero sus propias modificaciones no afectan al objeto original.
+
+```javascript
+// 'programmer' hereda las propiedades y métodos de 'person'
+let programmer = Object.create(person)
+programmer.language = "JavaScript"
+
+console.log(programmer.age)      // 19 (heredado de person)
+console.log(programmer.language) // "JavaScript" (propio de programmer)
+console.log(person.language)     // undefined (no afecta al padre)
+programmer.greet()               // "Hola, soy Cristopher"
+```
+
+### 3. Funciones Constructoras y Métodos en el Prototipo
+
+Antes de las clases de ES6, se utilizaban funciones constructoras junto con `new` para crear instancias. Al definir métodos directamente sobre `Constructor.prototype`, todas las instancias comparten una única copia del método en memoria.
+
+```javascript
+function Person(name, age){
+    this.name = name
+    this.age = age
+}
+
+// Método compartido por todas las instancias en el prototipo
+Person.prototype.greet = function(){
+    console.log(`Hola soy ${this.name}`)
+}
+
+let newPerson = new Person("Cristopher", 19)
+newPerson.greet() // "Hola soy Cristopher"
+```
+
+### 4. Métodos Avanzados de Objetos (`assign`, `keys`, `values` y `entries`)
+
+El objeto global `Object` proporciona utilidades estáticas para combinar objetos e inspeccionar su estructura en forma de arreglos:
+
+* **`Object.assign(destino, fuente)`**: Copia las propiedades de uno o más objetos fuente dentro de un objeto destino.
+* **`Object.keys()`**: Devuelve un array con todas las **claves** (nombres de propiedades) del objeto.
+* **`Object.values()`**: Devuelve un array con todos los **valores** del objeto.
+* **`Object.entries()`**: Devuelve un array de pares `[clave, valor]`.
+
+```javascript
+let personCore = { name: "Brais" }
+let personDetails = { age: 19, alias: "Cristopher" }
+
+// Fusionar objetos en uno solo
+let fullPerson = Object.assign(personCore, personDetails)
+
+console.log(Object.keys(fullPerson))    // ["name", "age", "alias"]
+console.log(Object.values(fullPerson))  // ["Brais", 19, "Cristopher"]
+console.log(Object.entries(fullPerson)) // [["name", "Brais"], ["age", 19], ["alias", "Cristopher"]]
+```
+
+### CODIGO
+
+- [Advanced Objects and Prototypes JavaScript](04-advanced-objects.js)
