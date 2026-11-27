@@ -34,6 +34,16 @@ Bienvenido a este repositorio de práctica y documentación del **Curso Intermed
   - [4. Métodos Avanzados de Objetos (`assign`, `keys`, `values` y `entries`)](#4-métodos-avanzados-de-objetos-assign-keys-values-y-entries)
 
 
+<!--Clases Avanzadas -->
+- [04 - Advanced Classes (Clases Avanzadas) en JavaScript](#04---advanced-classes-clases-avanzadas-en-javascript)
+  - [1. Abstracción y Polimorfismo (`new.target` y `extends`)](#1-abstracción-y-polimorfismo-newtarget-y-extends)
+  - [2. Mixins (`Object.assign`)](#2-mixins-objectassign)
+  - [3. Patrón Singleton](#3-patrón-singleton)
+  - [4. Propiedades Privadas con `Symbol`](#4-propiedades-privadas-con-symbol)
+  - [5. Verificación e Instanciación (`instanceof` y `Object.create`)](#5-verificación-e-instanciación-instanceof-y-objectcreate)
+  - [6. Proxies (`Proxy`)](#6-proxies-proxy)
+
+
 </details>
 
 
@@ -397,3 +407,155 @@ console.log(Object.entries(fullPerson)) // [["name", "Brais"], ["age", 19], ["al
 ### CODIGO
 
 - [Advanced Objects and Prototypes JavaScript](/Intermedio/04-Objectos-Avanzados.js)
+
+
+## 04 - Advanced Classes (Clases Avanzadas) en JavaScript
+
+Las clases en JavaScript ofrecen azúcar sintáctico sobre la herencia prototípica, permitiendo implementar patrones avanzados de programación orientada a objetos como **abstracción**, **polimorfismo**, **mixins**, **Singleton**, propiedades semi-privadas con `Symbol` e interceptores mediante `Proxy`.
+
+### 1. Abstracción y Polimorfismo (`new.target` y `extends`)
+
+* **Abstracción**: JavaScript no tiene clases abstractas nativas, pero se simulan verificando `new.target` en el constructor para impedir que una clase base sea instanciada directamente.
+* **Polimorfismo**: Permite que distintas subclases (`extends`) sobrescriban un mismo método (`makeSound`) para comportarse de manera diferente.
+
+```javascript
+// Clase abstracta simulada
+class Animal {
+    constructor(name){
+        if (new.target === Animal) {
+            throw new Error("No se puede instanciar una clase abstracta")
+        }
+        this.name = name
+    }
+    makeSound(){
+        throw new Error("Este método debe ser implementado por las subclases")
+    }
+}
+
+// Polimorfismo en subclases
+class Cat extends Animal {
+    makeSound(){ console.log("Miau!") }
+}
+class Dog extends Animal {
+    makeSound(){ console.log("Guau!") }
+}
+
+const cat = new Cat("CrisGato")
+cat.makeSound() // "Miau!"
+```
+
+### 2. Mixins (`Object.assign`)
+
+Un **Mixin** es un objeto con métodos reutilizables que se inyectan en el prototipo de múltiples clases mediante `Object.assign()`, evitando las limitaciones de la herencia simple.
+
+```javascript
+const FlyMixin = {
+    fly(){
+        console.log(`${this.name} está volando`)
+    }
+}
+
+class Bird extends Animal {}
+class Dragon extends Animal {}
+
+// Inyectar la funcionalidad de vuelo en ambas clases
+Object.assign(Bird.prototype, FlyMixin)
+Object.assign(Dragon.prototype, FlyMixin)
+
+const dragon = new Dragon("CrisDragon")
+dragon.fly() // "CrisDragon está volando"
+```
+
+### 3. Patrón Singleton
+
+El patrón **Singleton** garantiza que una clase tenga **una única instancia** global durante toda la ejecución del programa, devolviendo siempre la referencia ya creada.
+
+```javascript
+class Session {
+    constructor(name){
+        if (Session.instance) {
+            return Session.instance // Retorna la instancia existente
+        }
+        this.name = name
+        Session.instance = this
+    }
+}
+
+const session1 = new Session("Cristopher")
+const session2 = new Session("Alexander") // Ignora el nuevo nombre y devuelve session1
+
+console.log(session2.name)          // "Cristopher"
+console.log(session1 === session2)  // true
+```
+
+### 4. Propiedades Privadas con `Symbol`
+
+Un **`Symbol`** genera un identificador único e irrepetible. Usarlo como clave de propiedad dentro de una clase evita colisiones de nombres y oculta la propiedad del acceso directo convencional.
+
+```javascript
+const ID = Symbol("id")
+
+class User {
+    constructor(name){
+        this.name = name
+        this[ID] = Math.random() // Propiedad identificada por Symbol
+    }
+    getId(){
+        return this[ID]
+    }
+}
+
+const user = new User("Fernanda")
+console.log(user.ID)      // undefined (no accesible directamente)
+console.log(user.getId()) // Muestra el ID generado
+```
+
+### 5. Verificación e Instanciación (`instanceof` y `Object.create`)
+
+* **`instanceof`**: Verifica si un objeto pertenece a la cadena de prototipos de una clase.
+* **`Object.create(Class.prototype)`**: Crea una instancia vinculada al prototipo de la clase sin ejecutar su constructor.
+
+```javascript
+class Car {}
+
+const car = new Car()
+const anotherCar = Object.create(Car.prototype)
+
+console.log(car instanceof Car)        // true
+console.log(anotherCar instanceof Car) // true
+```
+
+### 6. Proxies (`Proxy`)
+
+Un **`Proxy`** envuelve un objeto (como una instancia de clase) para interceptar y personalizar operaciones fundamentales como la lectura (`get`) y escritura (`set`) de sus propiedades, ideal para validaciones o registros.
+
+```javascript
+const handler = {
+    get(target, property){
+        console.log(`Accediendo a: ${property}`)
+        return target[property]
+    },
+    set(target, property, value){
+        if (property === "balance" && value < 0) {
+            throw new Error("El saldo no puede ser negativo")
+        }
+        target[property] = value
+        return true
+    }
+}
+
+class BankAccount {
+    constructor(balance){
+        this.balance = balance
+    }
+}
+
+const account = new Proxy(new BankAccount(100), handler)
+account.balance = 50         // Válido
+console.log(account.balance) // "Accediendo a: balance" -> 50
+```
+
+### CODIGO
+
+- [Advanced Classes JavaScript](05-Clases-Avanzadas.js)
+- [Ejercicios Objetos y Clases Avanzados](06-Ejercicios-Clases-Avanzadas.js)
